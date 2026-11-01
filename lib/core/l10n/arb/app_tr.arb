@@ -1,0 +1,1672 @@
+{
+  "@@locale": "tr",
+  "appTitle": "Vakıf Atlas Yönetim",
+  "appBrandSubtitle": "VGM Yönetim Paneli",
+  "errorInvalidRequest": "Gönderilen istek geçersiz. Lütfen girdiğiniz bilgileri kontrol edin.",
+  "errorNotFound": "Kayıt bulunamadı veya bu işlem için yetkiniz yok.",
+  "errorServerUnavailable": "Sunucu şu anda geçici olarak hizmet veremiyor. Lütfen birazdan tekrar deneyin.",
+  "errorUnexpected": "Beklenmeyen bir hata oluştu. Lütfen tekrar deneyin.",
+  "errorUnauthorized": "Oturum süreniz doldu veya bu işlem için yetkiniz bulunmuyor.",
+  "errorTooManyRequests": "Çok fazla deneme yapıldı. Lütfen biraz sonra tekrar deneyin.",
+  "errorTooManyRequestsRetry": "{minutes, plural, =1{Çok fazla deneme yapıldı. 1 dakika sonra tekrar deneyin.} other{Çok fazla deneme yapıldı. {minutes} dakika sonra tekrar deneyin.}}",
+  "@errorTooManyRequestsRetry": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "errorOffline": "İnternet bağlantınız yok. Bağlantınızı kontrol edip tekrar deneyin.",
+  "errorServerUnreachable": "Vakıf Atlas sunucusuna şu anda ulaşılamıyor. İnternet bağlantınız çalışıyor; lütfen birazdan tekrar deneyin.",
+  "errorCacheRead": "Yerel veri okunamadı.",
+  "errorSecurityViolation": "Güvenli bağlantı doğrulanamadı.",
+  "errorInvalidCredentials": "E-posta adresi veya şifre hatalı. Bilgilerinizi kontrol edip tekrar deneyin.",
+  "errorInvalidMfaCode": "Doğrulama kodu hatalı. Authenticator uygulamanızdaki güncel kodu girin.",
+  "errorMfaExpired": "Giriş adımının süresi doldu. Lütfen yeniden giriş yapın.",
+  "errorInvalidVerificationCode": "Kod hatalı. E-postanızdaki 6 haneli kodu kontrol edip tekrar deneyin.",
+  "errorVerificationCodeExpired": "Kodun süresi doldu veya çok fazla hatalı deneme yapıldı. Yeni bir kod isteyin.",
+  "errorWeakPassword": "Bu şifre güvenlik kurallarını karşılamıyor. Daha uzun ve tahmin edilmesi zor bir şifre seçin.",
+  "errorInvalidCurrentPassword": "Mevcut şifreniz hatalı.",
+  "errorStaleData": "Bu kayıt siz incelerken başka bir personel tarafından değiştirildi. Güncel hâlini yükleyip tekrar deneyin.",
+  "errorConflictTransition": "Bu durum geçişi artık geçerli değil. Kaydı yenileyin.",
+  "errorConflictMonumentExists": "Bu kimlikle kayıtlı bir eser zaten var. Farklı bir kimlik seçin.",
+  "errorConflictComplexMembers": "Külliye yapıları kuralına uymuyor: yapısı olan külliye kaldırılamaz, yapılar başka külliye olamaz.",
+  "errorConflictLastAdmin": "Sistemde etkin en az bir yönetici kalmalıdır.",
+  "errorConflictSelf": "Kendi yönetici yetkinizi kaldıramaz veya kendinizi devre dışı bırakamazsınız.",
+  "errorConflictInProgress": "Aynı işlem hâlâ sürüyor. Birkaç saniye sonra tekrar deneyin.",
+  "errorConflictStaffExists": "Bu e-posta adresi zaten personel olarak kayıtlı.",
+  "badgeOverflow": "{max}+",
+  "@badgeOverflow": {
+    "placeholders": {
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "buttonLoadingSemantics": "{label}, yükleniyor",
+  "@buttonLoadingSemantics": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "passwordShow": "Şifreyi göster",
+  "passwordHide": "Şifreyi gizle",
+  "a11yImageHidden": "Görsel gizlendi",
+  "galleryImageError": "Görsel yüklenemedi",
+  "notFoundTitle": "Sayfa bulunamadı",
+  "notFoundBody": "Aradığınız sayfa taşınmış veya kaldırılmış olabilir.",
+  "notFoundAction": "Panoya dön",
+  "featurePendingHeading": "Yakında",
+  "featurePendingBody": "{feature} bir sonraki sürümde kullanıma açılacak.",
+  "offlineBannerMessage": "Çevrimdışısınız. Değişiklikler bağlantı gelene kadar kaydedilemez.",
+  "offlineAnnouncement": "İnternet bağlantısı kesildi",
+  "onlineAnnouncement": "İnternet bağlantısı geri geldi",
+  "privacyOverlaySemantics": "Vakıf Atlas Yönetim, içerik gizlendi",
+  "splashLoadingSemantics": "Vakıf Atlas Yönetim açılıyor",
+  "commonRetry": "Tekrar dene",
+  "commonCancel": "Vazgeç",
+  "commonSave": "Kaydet",
+  "commonClose": "Kapat",
+  "commonConfirm": "Onayla",
+  "commonReload": "Yeniden yükle",
+  "commonLoading": "Yükleniyor",
+  "commonLoadMore": "Daha fazla yükle",
+  "commonSearch": "Ara",
+  "commonClearFilters": "Süzgeçleri temizle",
+  "commonAll": "Tümü",
+  "commonBack": "Geri",
+  "commonCopy": "Kopyala",
+  "commonCopied": "Panoya kopyalandı",
+  "commonEdit": "Düzenle",
+  "commonNone": "—",
+  "commonYes": "Evet",
+  "commonNo": "Hayır",
+  "commonResultCount": "{count, plural, =0{Sonuç yok} =1{1 sonuç} other{{count} sonuç}}",
+  "@commonResultCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "commonShownOfTotal": "{shown} / {total} gösteriliyor",
+  "@commonShownOfTotal": {
+    "placeholders": {
+      "shown": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "commonEmptyTitle": "Kayıt yok",
+  "commonEmptyFiltered": "Seçili süzgeçlere uyan kayıt yok.",
+  "commonLoadError": "Veriler yüklenemedi",
+  "commonSelectPrompt": "Ayrıntıları görmek için listeden bir kayıt seçin.",
+  "commonUnsavedTitle": "Kaydedilmemiş değişiklikler",
+  "commonUnsavedBody": "Yaptığınız değişiklikler kaybolacak. Çıkmak istiyor musunuz?",
+  "commonDiscard": "Değişiklikleri at",
+  "commonStaleTitle": "Kayıt değişti",
+  "@featurePendingBody": {
+    "placeholders": {
+      "feature": {
+        "type": "String"
+      }
+    }
+  },
+  "searchClear": "Aramayı temizle",
+  "navLabel": "Ana gezinme",
+  "navDashboard": "Pano",
+  "navCatalog": "Katalog",
+  "navCivilProtection": "Sivil Koruma",
+  "navModeration": "Anı Moderasyonu",
+  "navFeedback": "Geri Bildirim",
+  "navStaff": "Personel",
+  "navAudit": "Denetim Kaydı",
+  "navProfile": "Profilim",
+  "navSettings": "Ayarlar",
+  "navSignOut": "Çıkış yap",
+  "navCollapse": "Kenar çubuğunu daralt",
+  "navExpand": "Kenar çubuğunu genişlet",
+  "navAccountMenu": "Hesap menüsü, {name}",
+  "@navAccountMenu": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "navBadgeSemantics": "{label}, {count} bekleyen",
+  "@navBadgeSemantics": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "roleAdmin": "Yönetici",
+  "signOutConfirmTitle": "Çıkış yapılsın mı?",
+  "signOutConfirmBody": "Bu cihazdaki personel oturumunuz kapatılacak.",
+  "sessionExpiredMessage": "Oturumunuz sona erdi. Lütfen yeniden giriş yapın.",
+  "sessionIdleMessage": "30 dakika işlem yapılmadığı için oturumunuz güvenlik amacıyla kapatıldı.",
+  "signInTitle": "Personel girişi",
+  "signInSubtitle": "VGM personeli için yönetim paneli. Erişim rolünüze göre açılır.",
+  "signInEmail": "Kurumsal e-posta",
+  "signInPassword": "Şifre",
+  "signInSubmit": "Devam et",
+  "signInForgotPassword": "Şifremi unuttum",
+  "signInEmailInvalid": "Geçerli bir e-posta adresi girin.",
+  "signInPasswordRequired": "Şifrenizi girin.",
+  "signInMfaTitle": "İki adımlı doğrulama",
+  "signInMfaBody": "Authenticator uygulamanızdaki 6 haneli kodu girin.",
+  "signInMfaCode": "Doğrulama kodu",
+  "signInMfaCodeInvalid": "6 haneli kodu girin.",
+  "signInMfaVerify": "Doğrula ve giriş yap",
+  "signInUseRecovery": "Kurtarma kodu kullan",
+  "signInUseAuthenticator": "Authenticator kodu kullan",
+  "signInRecoveryCode": "Kurtarma kodu",
+  "signInRecoveryHint": "XXXX-XXXX",
+  "signInRecoveryInvalid": "Kurtarma kodu 8 karakterdir (XXXX-XXXX).",
+  "signInBack": "Farklı hesapla giriş",
+  "signInExpiresIn": "Bu adım {minutes} dakika geçerlidir.",
+  "@signInExpiresIn": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "enrollTitle": "Authenticator kurulumu",
+  "enrollBody": "Yönetici hesapları iki adımlı doğrulama gerektirir. Google Authenticator, Microsoft Authenticator gibi bir uygulamayla QR kodu tarayın veya kurulum anahtarını elle girin.",
+  "enrollQrSemantics": "Authenticator kurulum QR kodu. Tarayamıyorsanız aşağıdaki kurulum anahtarını kullanın.",
+  "enrollSecretLabel": "Kurulum anahtarı",
+  "enrollAccount": "Hesap: {account}",
+  "@enrollAccount": {
+    "placeholders": {
+      "account": {
+        "type": "String"
+      }
+    }
+  },
+  "enrollConfirmCode": "Uygulamada görünen kod",
+  "enrollConfirm": "Kurulumu tamamla",
+  "recoveryTitle": "Kurtarma kodlarınız",
+  "recoveryBody": "Authenticator uygulamanıza erişemezseniz bu kodlardan biriyle giriş yapabilirsiniz. Her kod bir kez kullanılır. Kodları güvenli bir yerde saklayın; bir daha gösterilmeyecek.",
+  "recoveryCopyAll": "Tümünü kopyala",
+  "recoveryAcknowledge": "Kodları güvenli bir yere kaydettim",
+  "recoveryContinue": "Panele geç",
+  "resetTitle": "Şifre belirle / sıfırla",
+  "resetBody": "Kurumsal e-posta adresinizi girin. Hesabınız varsa 6 haneli bir kod göndereceğiz.",
+  "resetSendCode": "Kod gönder",
+  "resetCodeSent": "Kod gönderildi. E-postanızdaki kodu ve yeni şifrenizi girin.",
+  "resetCode": "E-postadaki kod",
+  "resetNewPassword": "Yeni şifre",
+  "resetPasswordHint": "En az 12 karakter. Uzun bir parola cümlesi en güvenlisidir.",
+  "resetPasswordTooShort": "Şifre en az 12 karakter olmalıdır.",
+  "resetSubmit": "Şifreyi kaydet",
+  "resetDone": "Şifreniz kaydedildi. Şimdi giriş yapabilirsiniz.",
+  "resetBackToSignIn": "Girişe dön",
+  "dashboardTitle": "Pano",
+  "dashboardGreeting": "Hoş geldiniz, {name}",
+  "@dashboardGreeting": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "dashboardUpdatedAt": "Son güncelleme: {time}",
+  "@dashboardUpdatedAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "dashboardRefresh": "Yenile",
+  "dashboardSectionError": "Bu bölümün özeti alınamadı.",
+  "dashboardReportsTitle": "Sivil Koruma bildirimleri",
+  "dashboardReportsCritical": "{count} kritik",
+  "@dashboardReportsCritical": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dashboardModerationTitle": "Anı Köşesi moderasyonu",
+  "dashboardModerationPending": "{count} onay bekliyor",
+  "@dashboardModerationPending": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dashboardModerationReported": "{count} bildirilen anı",
+  "@dashboardModerationReported": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dashboardFeedbackTitle": "Geri bildirim",
+  "dashboardFeedbackRating": "Ortalama puan {rating} ({count} değerlendirme)",
+  "@dashboardFeedbackRating": {
+    "placeholders": {
+      "rating": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dashboardFeedbackNoRating": "Henüz puan verilmedi",
+  "dashboardCatalogTitle": "Katalog",
+  "dashboardCatalogArchived": "{count} yayından kaldırıldı",
+  "@dashboardCatalogArchived": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dashboardNoSections": "Rolünüz henüz bir yönetim bölümü açmıyor. Yetki için VGM yöneticinize başvurun.",
+  "reportsTitle": "Sivil Koruma incelemesi",
+  "reportsSubtitle": "Vatandaşların eserlerde gördüğü hasar bildirimleri. Durum değişikliği vatandaşa notuyla birlikte gösterilir.",
+  "reportsSearch": "Kayıt numarası (SK-2026-…)",
+  "reportsListLabel": "Bildirim kuyruğu",
+  "reportsDetailLabel": "Bildirim ayrıntısı",
+  "reportsFilterStatus": "Durum",
+  "reportsFilterUrgency": "Aciliyet",
+  "reportsFilterCategory": "Hasar türü",
+  "reportsFilterOpen": "Açık",
+  "reportsSort": "Sıralama",
+  "reportsSortNewest": "En yeni",
+  "reportsSortOldest": "En eski",
+  "reportsSortUrgency": "Aciliyete göre",
+  "reportsEmpty": "Bu süzgeçlere uyan bildirim yok.",
+  "reportStatusReceived": "Alındı",
+  "reportStatusInReview": "İnceleniyor",
+  "reportStatusForwarded": "Yetkili birime iletildi",
+  "reportStatusResolved": "Sonuçlandı",
+  "reportStatusClosed": "Kapatıldı",
+  "urgencyCritical": "Kritik",
+  "urgencyHigh": "Yüksek",
+  "urgencyMedium": "Orta",
+  "urgencyLow": "Düşük",
+  "urgencyLabel": "Aciliyet: {level}",
+  "@urgencyLabel": {
+    "placeholders": {
+      "level": {
+        "type": "String"
+      }
+    }
+  },
+  "categoryStructuralDamage": "Yapısal hasar",
+  "categoryCollapseRisk": "Çökme riski",
+  "categoryVandalism": "Vandalizm",
+  "categoryTheft": "Hırsızlık",
+  "categoryFireOrWater": "Yangın / su hasarı",
+  "categoryUnauthorizedWork": "İzinsiz müdahale",
+  "categoryOther": "Diğer",
+  "verificationNotProvided": "Konum paylaşılmadı",
+  "verificationOnSite": "Yerinde (esere {distance} m)",
+  "@verificationOnSite": {
+    "placeholders": {
+      "distance": {
+        "type": "int"
+      }
+    }
+  },
+  "verificationDistant": "Uzakta (esere {distance} m)",
+  "@verificationDistant": {
+    "placeholders": {
+      "distance": {
+        "type": "int"
+      }
+    }
+  },
+  "reportSectionSummary": "Bildirim",
+  "reportSectionPhotos": "Fotoğraflar",
+  "reportSectionLocation": "Konum",
+  "reportSectionHistory": "Süreç",
+  "reportSectionAction": "Durumu güncelle",
+  "reportMonument": "Eser",
+  "reportPlace": "Yer",
+  "reportCategory": "Hasar türü",
+  "reportCreatedAt": "Bildirim tarihi",
+  "reportReference": "Kayıt numarası",
+  "reportAnonymized": "Bildiren hesabını sildi; kayıt kişiyle bağlantısız korunuyor.",
+  "reportNoPhotos": "Fotoğraf eklenmemiş.",
+  "reportPhotoSemantics": "Bildirim fotoğrafı {index} / {count}",
+  "@reportPhotoSemantics": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "reportCoordinates": "{latitude}, {longitude} (±{accuracy} m)",
+  "@reportCoordinates": {
+    "placeholders": {
+      "latitude": {
+        "type": "String"
+      },
+      "longitude": {
+        "type": "String"
+      },
+      "accuracy": {
+        "type": "int"
+      }
+    }
+  },
+  "reportCopyCoordinates": "Koordinatları kopyala",
+  "reportOpenMap": "OpenStreetMap'te aç",
+  "reportLocationRetention": "Ham konum yalnızca VGM incelemesi içindir; rapor sonuçlandıktan 90 gün sonra silinir.",
+  "reportHistoryBy": "{name} tarafından",
+  "@reportHistoryBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "reportHistoryNoteCitizen": "Vatandaşa not: {note}",
+  "@reportHistoryNoteCitizen": {
+    "placeholders": {
+      "note": {
+        "type": "String"
+      }
+    }
+  },
+  "reportHistoryNoteInternal": "İç not: {note}",
+  "@reportHistoryNoteInternal": {
+    "placeholders": {
+      "note": {
+        "type": "String"
+      }
+    }
+  },
+  "reportFinalStatus": "Bu bildirim sonuçlandı; durumu artık değiştirilemez.",
+  "reportNextStatus": "Yeni durum",
+  "reportNoteCitizen": "Vatandaşa not (isteğe bağlı)",
+  "reportNoteCitizenHelp": "Bildirimlerim ekranında görünür. Kişisel veri yazmayın.",
+  "reportNoteInternal": "İç not (yalnızca personel)",
+  "reportNoteTooLong": "Not en fazla 1000 karakter olabilir.",
+  "reportUpdate": "Durumu güncelle",
+  "reportUpdated": "Bildirim durumu güncellendi: {status}",
+  "@reportUpdated": {
+    "placeholders": {
+      "status": {
+        "type": "String"
+      }
+    }
+  },
+  "reportConfirmFinalTitle": "Bildirim sonuçlandırılsın mı?",
+  "reportConfirmFinalBody": "\"{status}\" sonuç durumudur; sonra değiştirilemez ve ham konum saklama süresi başlar.",
+  "@reportConfirmFinalBody": {
+    "placeholders": {
+      "status": {
+        "type": "String"
+      }
+    }
+  },
+  "reportTileSemantics": "{reference}, {monument}, {status}, aciliyet {urgency}",
+  "@reportTileSemantics": {
+    "placeholders": {
+      "reference": {
+        "type": "String"
+      },
+      "monument": {
+        "type": "String"
+      },
+      "status": {
+        "type": "String"
+      },
+      "urgency": {
+        "type": "String"
+      }
+    }
+  },
+  "moderationTitle": "Anı Köşesi moderasyonu",
+  "moderationSubtitle": "Onay bekleyen anılar ve kullanıcı bildirimleri (şikâyetler). 3 farklı bildirim alan anı inceleme bitene kadar herkese gizlenir.",
+  "moderationSearch": "Metin veya yazar ara",
+  "moderationListLabel": "Moderasyon kuyruğu",
+  "moderationDetailLabel": "Anı ayrıntısı",
+  "moderationQueuePending": "Onay bekleyen",
+  "moderationQueueReported": "Bildirilen",
+  "moderationQueueRejected": "Yayından kaldırılan",
+  "moderationQueueAll": "Tümü",
+  "moderationEmptyPending": "Onay bekleyen anı yok.",
+  "moderationEmptyReported": "Açık bildirimi olan anı yok.",
+  "memoryStatusApproved": "Yayında",
+  "memoryStatusPending": "Onay bekliyor",
+  "memoryStatusRejected": "Yayından kaldırıldı",
+  "memoryHiddenByReports": "Bildirimlerle gizlendi",
+  "memoryOpenReports": "{count, plural, =1{1 açık bildirim} other{{count} açık bildirim}}",
+  "@memoryOpenReports": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "reasonOffensive": "Saldırgan / hakaret",
+  "reasonInappropriate": "Uygunsuz içerik",
+  "reasonSpam": "Spam / reklam",
+  "reasonPersonalInfo": "Kişisel bilgi içeriyor",
+  "reasonUnrelated": "Eserle ilgisiz",
+  "reasonOther": "Diğer",
+  "memoryTileSemantics": "{monument}, {author}, {status}",
+  "@memoryTileSemantics": {
+    "placeholders": {
+      "monument": {
+        "type": "String"
+      },
+      "author": {
+        "type": "String"
+      },
+      "status": {
+        "type": "String"
+      }
+    }
+  },
+  "memorySectionContent": "Anı",
+  "memorySectionReports": "Bildirimler",
+  "memorySectionModeration": "Moderasyon kararı",
+  "memoryAuthor": "Yazar",
+  "memoryMonument": "Eser",
+  "memoryDate": "Anı tarihi",
+  "memorySharedAt": "Paylaşım",
+  "memoryNoReports": "Bu anı için bildirim yok.",
+  "memoryReportResolutionOpen": "Açık",
+  "memoryReportResolutionUpheld": "Haklı bulundu",
+  "memoryReportResolutionDismissed": "Yersiz bulundu",
+  "memoryLastDecision": "Son karar: {name}, {date}",
+  "@memoryLastDecision": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "memoryPhotoSemantics": "Anı fotoğrafı {index} / {count}",
+  "@memoryPhotoSemantics": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "decisionApprove": "Yayınla",
+  "decisionKeep": "Bildirimleri reddet, yayında tut",
+  "decisionRestore": "Geri yükle",
+  "decisionReject": "Yayından kaldır",
+  "decisionReason": "Kaldırma nedeni",
+  "decisionReasonRequired": "Kaldırma nedeni seçin.",
+  "decisionNote": "İç not (isteğe bağlı, yazara gösterilmez)",
+  "decisionRejectConfirmTitle": "Anı yayından kaldırılsın mı?",
+  "decisionRejectConfirmBody": "Anı herkese gizlenir; açık bildirimler haklı sayılır. Kararı daha sonra geri yükleyerek değiştirebilirsiniz.",
+  "decisionSaved": "Moderasyon kararı kaydedildi: {status}",
+  "@decisionSaved": {
+    "placeholders": {
+      "status": {
+        "type": "String"
+      }
+    }
+  },
+  "feedbackTitle": "Geri bildirim",
+  "feedbackSubtitle": "Vatandaş uygulamasından gelen öneri, hata ve erişilebilirlik bildirimleri.",
+  "feedbackSearch": "Mesajda ara",
+  "feedbackListLabel": "Geri bildirim listesi",
+  "feedbackDetailLabel": "Geri bildirim ayrıntısı",
+  "feedbackFilterStatus": "Durum",
+  "feedbackFilterCategory": "Konu",
+  "feedbackFilterRating": "Puan",
+  "feedbackNoRating": "Puansız",
+  "feedbackStatusNew": "Yeni",
+  "feedbackStatusInProgress": "İşlemde",
+  "feedbackStatusDone": "Tamamlandı",
+  "feedbackStatusDismissed": "Gereksiz",
+  "feedbackCategorySuggestion": "Öneri",
+  "feedbackCategoryBug": "Hata",
+  "feedbackCategoryAccessibility": "Erişilebilirlik",
+  "feedbackCategoryContent": "Eser bilgisi",
+  "feedbackCategoryOther": "Diğer",
+  "feedbackRatingValue": "{rating} / 5 yıldız",
+  "@feedbackRatingValue": {
+    "placeholders": {
+      "rating": {
+        "type": "int"
+      }
+    }
+  },
+  "feedbackEmptyMessage": "(Yalnızca puan verildi)",
+  "feedbackSectionMessage": "Mesaj",
+  "feedbackSectionContext": "Bağlam",
+  "feedbackSectionTriage": "Triaj",
+  "feedbackAppVersion": "Uygulama sürümü",
+  "feedbackPlatform": "Platform",
+  "feedbackLanguage": "Dil",
+  "feedbackSender": "Gönderen",
+  "feedbackFromAccount": "Oturum açık hesap",
+  "feedbackFromGuest": "Misafir",
+  "feedbackReceivedAt": "Alındı",
+  "feedbackHandledBy": "Son işlem: {name}, {date}",
+  "@feedbackHandledBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "feedbackStaffNote": "İç not (gönderene gösterilmez)",
+  "feedbackSaveTriage": "Kaydet",
+  "feedbackTriaged": "Geri bildirim durumu: {status}",
+  "@feedbackTriaged": {
+    "placeholders": {
+      "status": {
+        "type": "String"
+      }
+    }
+  },
+  "feedbackTileSemantics": "{category}, {status}, {date}",
+  "@feedbackTileSemantics": {
+    "placeholders": {
+      "category": {
+        "type": "String"
+      },
+      "status": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "staffTitle": "Personel",
+  "staffSubtitle": "Yönetim paneline erişen VGM personeli ve rolleri. Her rol yalnızca kendi bölümünü açar.",
+  "staffSearch": "Ad veya e-posta ara",
+  "staffListLabel": "Personel listesi",
+  "staffDetailLabel": "Personel ayrıntısı",
+  "staffFilterRole": "Rol",
+  "staffFilterStatus": "Durum",
+  "staffStatusActive": "Etkin",
+  "staffStatusDisabled": "Devre dışı",
+  "staffInvite": "Personel davet et",
+  "staffInviteTitle": "Personel davet et",
+  "staffInviteBody": "Davet edilen kişiye e-posta gönderilir; şifresini \"Şifremi unuttum\" ile belirler ve ilk girişte Authenticator kurar.",
+  "staffInviteName": "Ad soyad",
+  "staffInviteNameRequired": "Ad soyad girin.",
+  "staffInviteRolesRequired": "En az bir rol seçin.",
+  "staffInviteSend": "Davet gönder",
+  "staffInvited": "{name} davet edildi",
+  "@staffInvited": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "staffRoles": "Roller",
+  "staffRolesSave": "Rolleri kaydet",
+  "staffRolesSaved": "Roller kaydedildi; personelin açık oturumları sonlandırıldı.",
+  "staffSectionAccount": "Hesap",
+  "staffSectionSecurity": "Güvenlik",
+  "staffMfaEnrolled": "İki adımlı doğrulama kurulu ({date})",
+  "@staffMfaEnrolled": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "staffMfaNotEnrolled": "İki adımlı doğrulama henüz kurulmadı (ilk girişte kurulur)",
+  "staffLastLogin": "Son giriş",
+  "staffNever": "Hiç giriş yapmadı",
+  "staffCreatedAt": "Eklenme",
+  "staffYou": "Siz",
+  "staffDisable": "Erişimi devre dışı bırak",
+  "staffEnable": "Erişimi etkinleştir",
+  "staffDisableConfirmTitle": "Personel erişimi kapatılsın mı?",
+  "staffDisableConfirmBody": "Kişi yönetim paneline giremez ve açık oturumları hemen sonlanır. Vatandaş hesabı etkilenmez.",
+  "staffResetMfa": "Authenticator'ı sıfırla",
+  "staffResetMfaConfirmTitle": "Authenticator sıfırlansın mı?",
+  "staffResetMfaConfirmBody": "Kurtarma kodları geçersiz olur; kişi sonraki girişte iki adımlı doğrulamayı yeniden kurar. Kimliğini başka bir kanaldan doğruladıktan sonra yapın.",
+  "staffRevokeSessions": "Oturumları sonlandır",
+  "staffRevokeConfirmTitle": "Tüm oturumlar sonlandırılsın mı?",
+  "staffRevokeConfirmBody": "Kişinin açık yönetim paneli oturumları kapanır; yeniden giriş yapması gerekir.",
+  "staffActionDone": "İşlem tamamlandı",
+  "staffSelfNote": "Kendi hesabınızda rol kaldırma ve devre dışı bırakma kapalıdır.",
+  "staffTileSemantics": "{name}, {roles}, {status}",
+  "@staffTileSemantics": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "roles": {
+        "type": "String"
+      },
+      "status": {
+        "type": "String"
+      }
+    }
+  },
+  "auditTitle": "Denetim kaydı",
+  "auditSubtitle": "Tüm servislerdeki personel işlemleri: kim, ne zaman, hangi kayıtta, neyi değiştirdi.",
+  "auditFilterService": "Servis",
+  "auditTargetSearch": "Kayıt kimliği",
+  "auditDateRange": "Tarih aralığı",
+  "auditColumnTime": "Zaman",
+  "auditColumnActor": "Personel",
+  "auditColumnAction": "İşlem",
+  "auditColumnTarget": "Kayıt",
+  "auditChanges": "Değişiklikler",
+  "auditCorrelation": "İzleme kimliği: {id}",
+  "@auditCorrelation": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "auditNoChanges": "Ek bilgi yok",
+  "auditServiceIdentity": "Kimlik",
+  "auditServiceCatalog": "Katalog",
+  "auditServiceCivilProtection": "Sivil Koruma",
+  "auditServiceMemories": "Anı Köşesi",
+  "auditServiceFeedback": "Geri bildirim",
+  "auditActionSignedIn": "Panele giriş yaptı",
+  "auditActionMfaEnrolled": "İki adımlı doğrulamayı kurdu",
+  "auditActionRecoveryUsed": "Kurtarma kodu kullandı",
+  "auditActionRecoveryRegenerated": "Kurtarma kodlarını yeniledi",
+  "auditActionPasswordChanged": "Şifresini değiştirdi",
+  "auditActionStaffInvited": "Personel davet etti",
+  "auditActionStaffRoles": "Personel rollerini değiştirdi",
+  "auditActionStaffDisabled": "Personel erişimini kapattı",
+  "auditActionStaffEnabled": "Personel erişimini açtı",
+  "auditActionStaffMfaReset": "Authenticator'ı sıfırladı",
+  "auditActionStaffSessions": "Oturumları sonlandırdı",
+  "auditActionReportStatus": "Bildirim durumunu değiştirdi",
+  "auditActionMemoryApproved": "Anıyı onayladı / yayında tuttu",
+  "auditActionMemoryRejected": "Anıyı yayından kaldırdı",
+  "auditActionFeedbackTriaged": "Geri bildirimi işledi",
+  "auditActionMonumentCreated": "Eser ekledi",
+  "auditActionMonumentUpdated": "Eseri güncelledi",
+  "auditActionMonumentArchived": "Eseri yayından kaldırdı",
+  "auditActionMonumentRestored": "Eseri yeniden yayınladı",
+  "auditActionComplexMembers": "Külliye yapılarını düzenledi",
+  "profileTitle": "Profilim",
+  "profileSectionAccount": "Hesap",
+  "profileSectionRoles": "Rollerim",
+  "profileSectionSecurity": "Güvenlik",
+  "profileSectionPassword": "Şifre değiştir",
+  "profileRolesHelp": "Roller VGM yöneticisi tarafından atanır.",
+  "profileMfaOn": "İki adımlı doğrulama açık (kurulum: {date})",
+  "@profileMfaOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "profileRecoveryRemaining": "{count, plural, =0{Kullanılabilir kurtarma kodu kalmadı.} =1{1 kurtarma kodu kaldı.} other{{count} kurtarma kodu kaldı.}}",
+  "@profileRecoveryRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "profileRecoveryLow": "Kurtarma kodlarınız azaldı. Authenticator erişimini kaybetmeden yenileyin.",
+  "profileRegenerate": "Kurtarma kodlarını yenile",
+  "profileRegenerateTitle": "Kurtarma kodlarını yenile",
+  "profileRegenerateBody": "Eski kodlar geçersiz olur. Onaylamak için Authenticator uygulamanızdaki güncel kodu girin.",
+  "profileRegenerateConfirm": "Yenile",
+  "profileCurrentPassword": "Mevcut şifre",
+  "profilePasswordSaved": "Şifreniz değiştirildi; diğer oturumlarınız kapatıldı.",
+  "profileSignOut": "Çıkış yap",
+  "settingsTitle": "Ayarlar",
+  "settingsSectionAppearance": "Görünüm",
+  "settingsSectionLanguage": "Dil",
+  "settingsSectionAccessibility": "Erişilebilirlik",
+  "settingsSectionAbout": "Hakkında",
+  "settingsThemeSystem": "Cihaz ayarı",
+  "settingsThemeLight": "Açık",
+  "settingsThemeDark": "Koyu",
+  "settingsHighContrast": "Yüksek kontrast",
+  "settingsHighContrastHelp": "Metin ve çizgiler için en az 7:1 kontrast.",
+  "settingsLanguageSystem": "Cihaz dili",
+  "settingsTextScale": "Metin boyutu",
+  "settingsTextScaleValue": "%{percent}",
+  "@settingsTextScaleValue": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "settingsReduceMotion": "Hareketi azalt",
+  "settingsReduceMotionHelp": "Geçiş ve kayma animasyonlarını kapatır.",
+  "settingsShortcuts": "Klavye kısayolları",
+  "settingsShortcutSearch": "Aramaya git",
+  "settingsShortcutNew": "Yeni kayıt",
+  "settingsShortcutSave": "Kaydet",
+  "settingsShortcutRefresh": "Yenile",
+  "settingsShortcutClose": "Ayrıntıyı kapat",
+  "settingsVersion": "Sürüm {version}",
+  "@settingsVersion": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "settingsAboutBody": "Vakıflar Genel Müdürlüğü personeli için Vakıf Atlas yönetim istemcisi. Root42 tarafından geliştirilmiştir.",
+  "catalogTitle": "Katalog",
+  "catalogSubtitle": "VGM onaylı vakıf eserleri. Değişiklikler vatandaş uygulamasına ve haritaya hemen yansır.",
+  "catalogSearch": "Ad, il, bani veya kimlik ara",
+  "catalogNew": "Yeni eser",
+  "catalogFilterCategory": "Tür",
+  "catalogFilterPeriod": "Dönem",
+  "catalogFilterPublication": "Yayın",
+  "catalogSortName": "Ada göre",
+  "catalogSortUpdated": "Son güncellenen",
+  "publicationPublished": "Yayında",
+  "publicationArchived": "Yayından kaldırıldı",
+  "categoryMosque": "Cami",
+  "categoryComplex": "Külliye",
+  "categoryMadrasa": "Medrese",
+  "categoryInn": "Han",
+  "categoryCaravanserai": "Kervansaray",
+  "categoryBath": "Hamam",
+  "categoryFountain": "Çeşme",
+  "categoryTomb": "Türbe",
+  "categoryHospital": "Darüşşifa",
+  "categoryImaret": "İmaret",
+  "categoryMonumentOther": "Diğer",
+  "periodSeljuk": "Selçuklu",
+  "periodBeylik": "Beylikler",
+  "periodOttoman": "Osmanlı",
+  "periodOther": "Diğer",
+  "catalogImageCount": "{count, plural, =0{Görsel yok} =1{1 görsel} other{{count} görsel}}",
+  "@catalogImageCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "catalogMemberCount": "{count} yapı",
+  "@catalogMemberCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "catalogPartOf": "{name} içinde",
+  "@catalogPartOf": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "catalogRowSemantics": "{name}, {category}, {city}, {publication}",
+  "@catalogRowSemantics": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "category": {
+        "type": "String"
+      },
+      "city": {
+        "type": "String"
+      },
+      "publication": {
+        "type": "String"
+      }
+    }
+  },
+  "editorNewTitle": "Yeni eser",
+  "editorBack": "Kataloğa dön",
+  "editorTabGeneral": "Genel",
+  "editorTabTurkish": "Türkçe",
+  "editorTabEnglish": "İngilizce",
+  "editorTabImages": "Görseller",
+  "editorTabMembers": "Külliye yapıları",
+  "editorTabHasErrors": "{tab}, düzeltilmesi gereken alanlar var",
+  "@editorTabHasErrors": {
+    "placeholders": {
+      "tab": {
+        "type": "String"
+      }
+    }
+  },
+  "editorSave": "Kaydet",
+  "editorSaved": "Eser kaydedildi",
+  "editorDiscard": "Değişiklikleri geri al",
+  "editorUnsaved": "Kaydedilmemiş değişiklikler var",
+  "editorErrorsSummary": "Kaydetmeden önce işaretli alanları düzeltin.",
+  "editorArchive": "Yayından kaldır",
+  "editorRestore": "Yeniden yayınla",
+  "editorArchiveConfirmTitle": "Eser yayından kaldırılsın mı?",
+  "editorArchiveConfirmBody": "Eser vatandaş uygulamasında ve haritada görünmez; rotalar, kayıtlar ve anılar \"katalogdan kalkmış\" gösterir. Daha sonra yeniden yayınlanabilir.",
+  "editorArchivedNotice": "Bu eser yayında değil ({date}).",
+  "@editorArchivedNotice": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "editorPublicationChanged": "Yayın durumu güncellendi",
+  "editorFieldId": "Kimlik (adres)",
+  "editorFieldIdHelp": "Küçük harf, rakam ve tire; kaydedildikten sonra değiştirilemez. Örn. selimiye-camii",
+  "editorFieldIdError": "3–120 karakter; yalnızca küçük harf, rakam ve tek tire.",
+  "editorSuggestId": "Addan öner",
+  "editorFieldCategory": "Tür",
+  "editorFieldPeriod": "Dönem",
+  "editorFieldCity": "İl",
+  "editorFieldDistrict": "İlçe",
+  "editorFieldAddress": "Adres",
+  "editorFieldLatitude": "Enlem",
+  "editorFieldLongitude": "Boylam",
+  "editorFieldLocationError": "Türkiye sınırları içinde geçerli bir koordinat girin (ondalık derece).",
+  "editorFieldLocationHelp": "Ondalık derece (WGS 84), örn. 41.6781 / 26.5594.",
+  "editorFieldUnesco": "UNESCO Dünya Mirası",
+  "editorFieldComplex": "Bağlı olduğu külliye",
+  "editorFieldComplexHelp": "Eser bir külliyenin yapısıysa listeden seçin; değilse bağımsız bırakın. Külliye türündeki eser başka külliyeye bağlanamaz.",
+  "editorFieldComplexError": "Seçilen külliye geçersiz. Listeden yeniden seçin.",
+  "editorFieldComplexOrder": "Külliyedeki sıra",
+  "editorFieldRequired": "Bu alan zorunludur.",
+  "editorFieldName": "Ad",
+  "editorFieldShortDescription": "Kısa tanıtım",
+  "editorFieldShortDescriptionHelp": "Liste ve kartlarda görünür (en fazla 1000 karakter).",
+  "editorFieldDescription": "Açıklama",
+  "editorFieldDescriptionHelp": "Paragrafları boş satırla ayırın.",
+  "editorFieldHistory": "Tarihçe",
+  "editorFieldConstructionDate": "Yapım tarihi",
+  "editorFieldFounder": "Bani (yaptıran)",
+  "editorFieldArchitect": "Mimar",
+  "editorImagesHelp": "İlk görsel kapak görselidir. Her görsel için iki dilde alternatif metin, yazar ve lisans zorunludur (atıf). En fazla 10 görsel.",
+  "editorImagesAdd": "Görsel ekle",
+  "editorImagesUploading": "{count} görsel hazırlanıyor ve yükleniyor…",
+  "@editorImagesUploading": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "editorImagesUploadError": "Görsel yüklenemedi: {reason}",
+  "@editorImagesUploadError": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "editorImagesInvalid": "Dosya okunamadı veya desteklenmeyen biçimde.",
+  "editorImagesError": "Her görsel için alternatif metin (TR/EN), yazar ve lisans girin.",
+  "editorImagesEmpty": "Henüz görsel yok.",
+  "editorImageCover": "Kapak",
+  "editorImageNew": "Yeni",
+  "editorImageMirrored": "Kurum deposunda",
+  "editorImageAltTr": "Alternatif metin (TR)",
+  "editorImageAltEn": "Alternatif metin (EN)",
+  "editorImageAuthor": "Yazar",
+  "editorImageLicense": "Lisans",
+  "editorImageSourceName": "Kaynak",
+  "editorImageSourceUrl": "Kaynak adresi",
+  "editorImageMoveUp": "Yukarı taşı",
+  "editorImageMoveDown": "Aşağı taşı",
+  "editorImageRemove": "Görseli kaldır",
+  "editorImageSemantics": "Görsel {index} / {count}",
+  "@editorImageSemantics": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "editorImagesFileType": "Görseller",
+  "editorMembersHelp": "Yapıların küratörlü sırası (cami genelde ilk). Yapı eklemek için listeden seçin; sıralama ve üyelik kaydedildiğinde külliyenin yerleşim alanı yeniden hesaplanır.",
+  "editorMembersSaveFirst": "Yapılar, külliye kaydedildikten sonra düzenlenebilir.",
+  "editorMembersAdd": "Yapı ekle",
+  "editorMembersSave": "Yapıları kaydet",
+  "editorMembersSaved": "Külliye yapıları kaydedildi",
+  "editorMembersEmpty": "Bu külliyeye bağlı yapı yok.",
+  "editorMemberRemove": "Külliyeden çıkar",
+  "editorMemberArchived": "yayında değil",
+  "editorMemberOrder": "{index}. {name}",
+  "@editorMemberOrder": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "appBrandName": "Vakıf Atlas",
+  "filterSelectedCount": "{count} seçili",
+  "@filterSelectedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "filterClearSelection": "Seçimi temizle",
+  "catalogColumnName": "Eser",
+  "catalogColumnCategory": "Tür",
+  "catalogColumnPeriod": "Dönem",
+  "catalogColumnLocation": "Konum",
+  "catalogColumnImages": "Görsel",
+  "catalogColumnStatus": "Durum",
+  "catalogColumnUpdated": "Güncellendi",
+  "dashboardMetricOpenReports": "Açık hasar bildirimi",
+  "dashboardMetricModeration": "İşlem bekleyen anı",
+  "dashboardMetricFeedback": "Yeni geri bildirim",
+  "dashboardMetricCatalog": "Yayındaki eser",
+  "dashboardReportsNoCritical": "Kritik bildirim yok",
+  "dashboardOpenQueue": "Kuyruğu aç",
+  "dashboardOpenCatalog": "Kataloğu aç",
+  "dashboardByStatus": "Duruma göre",
+  "dashboardOpenByUrgency": "Açık bildirimler, aciliyete göre",
+  "dashboardByTopic": "Konuya göre",
+  "dashboardByCategory": "Türe göre",
+  "dashboardModerationReportedLabel": "Bildirilen",
+  "dashboardCatalogState": "Yayın durumu",
+  "dashboardCatalogNoImages": "Görseli olmayan",
+  "dashboardCatalogVersionLabel": "Katalog sürümü",
+  "auditFilterDate": "Tarih",
+  "editorFieldComplexOrderHelp": "Külliye sayfasındaki yapı sırası.",
+  "editorComplexNone": "Bağımsız eser (külliyeye bağlı değil)",
+  "editorComplexChoose": "Külliye seç",
+  "editorComplexChange": "Değiştir",
+  "editorComplexClear": "Bağlantıyı kaldır",
+  "editorFieldShortDescriptionTitle": "Kısa tanıtım başlığı",
+  "editorFieldKind": "Kayıt türü",
+  "editorKindWork": "Eser",
+  "editorKindComplex": "Külliye",
+  "editorCategoryAuto": "Türü addan belirle",
+  "editorCategoryAutoHelp": "Tür, Türkçe addaki son yapı sözcüğünden türetilir (ör. “… Camii Şadırvanı” → çeşme). Kapatıp elle seçebilirsiniz.",
+  "editorFieldActive": "Etkin",
+  "editorFieldActiveHelp": "Kapalıyken kayıt vatandaş uygulamasında görünmez.",
+  "editorComplexOpen": "Külliyeyi aç",
+  "editorComplexMembershipHelp": "Külliye üyeliği ve sırası, külliyenin “Külliye yapıları” sekmesinden düzenlenir.",
+  "editorComplexPosition": "Külliyedeki sıra: {position}",
+  "@editorComplexPosition": {"placeholders": {"position": {"type": "int"}}},
+  "pickerComplexTitle": "Külliye seç",
+  "pickerComplexSearch": "Külliye adı, il veya kimlik ara",
+  "pickerMembersTitle": "Külliyeye yapı ekle",
+  "pickerMembersSearch": "Eser adı, il veya kimlik ara",
+  "pickerMembersHelp": "Birden fazla yapı seçebilirsiniz. Başka bir külliyedeki yapı, yapılar kaydedildiğinde bu külliyeye taşınır.",
+  "pickerResultCount": "{count, plural, =0{Kayıt yok} =1{1 kayıt} other{{count} kayıt}}",
+  "@pickerResultCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "pickerSelectedCount": "{count, plural, =0{Seçim yok} other{{count} yapı seçildi}}",
+  "@pickerSelectedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "pickerAdd": "{count, plural, =0{Ekle} other{{count} yapıyı ekle}}",
+  "@pickerAdd": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "pickerAlreadyMember": "Bu külliyede zaten var",
+  "pickerCurrent": "Şu anki seçim",
+  "pickerInOtherComplex": "Şu an {name} içinde, eklenirse taşınır",
+  "@pickerInOtherComplex": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "roleEditor": "Editör",
+  "roleModerator": "Moderatör",
+  "roleAdminDescription": "Tüm bölümler, personel yönetimi ve denetim kaydı",
+  "roleEditorDescription": "Yalnızca katalog: eser ekleme, düzenleme, yayından kaldırma ve külliye ilişkileri",
+  "roleModeratorDescription": "Yalnızca kullanıcı içeriği: Anı Köşesi, Sivil Koruma bildirimleri ve geri bildirim",
+  "settingsReduceMotionLocked": "Cihazınızda hareketi azaltma açık; uygulama buna her zaman uyar. Kapatmak için sistem ayarlarını kullanın.",
+  "moderationQueueAutoRejected": "YZ'nin kaldırdıkları",
+  "moderationEmptyAutoRejected": "YZ'nin kaldırdığı anı yok.",
+  "moderationSortLabel": "Sıra",
+  "moderationSortOldest": "En eski önce",
+  "moderationSortAiScore": "En yüksek YZ skoru önce",
+  "moderationMetricsAction": "YZ metrikleri",
+  "aiVerdictApprove": "YZ: uygun",
+  "aiVerdictReview": "YZ: incelenmeli",
+  "aiVerdictReject": "YZ: kaldırıldı",
+  "aiVerdictUnscored": "YZ: skorlanamadı",
+  "aiChip": "{verdict} · {score}",
+  "@aiChip": {
+    "placeholders": {
+      "verdict": {
+        "type": "String"
+      },
+      "score": {
+        "type": "String"
+      }
+    }
+  },
+  "aiChipWithCategory": "{verdict} · {score} · {category}",
+  "@aiChipWithCategory": {
+    "placeholders": {
+      "verdict": {
+        "type": "String"
+      },
+      "score": {
+        "type": "String"
+      },
+      "category": {
+        "type": "String"
+      }
+    }
+  },
+  "aiCategoryToxicity": "Genel zararlılık",
+  "aiCategorySevereToxicity": "Ağır zararlılık",
+  "aiCategoryObscene": "Müstehcen dil / küfür",
+  "aiCategoryIdentityAttack": "Kimliğe saldırı",
+  "aiCategoryInsult": "Hakaret",
+  "aiCategoryThreat": "Tehdit",
+  "aiCategorySexualExplicit": "Cinsel içerik",
+  "aiReviewCauseScore": "Skor inceleme bandında",
+  "aiReviewCauseLanguage": "Model bu dili desteklemiyor",
+  "aiReviewCausePhotos": "Fotoğraflı anılar incelenir",
+  "aiReviewCauseUnscored": "Moderasyon servisine ulaşılamadı",
+  "memorySectionAi": "Yapay zekâ değerlendirmesi",
+  "aiVerdictLabel": "Öneri",
+  "aiScoreLabel": "Genel skor (0–1)",
+  "aiTopCategoryLabel": "Belirgin kategori",
+  "aiReviewCauseLabel": "İnceleme nedeni",
+  "aiLexiconLabel": "Türkçe sözlük eşleşmesi",
+  "aiLexiconYes": "Var — skor sözlükle yükseltildi",
+  "aiLexiconNo": "Yok",
+  "aiModelLabel": "Model",
+  "aiScoredAtLabel": "Değerlendirme zamanı",
+  "aiCategoryScores": "Kategori skorları",
+  "aiNotAssessed": "Bu anı YZ moderasyonu açılmadan paylaşıldı.",
+  "aiActorName": "YZ moderasyonu",
+  "decisionRestoreAi": "Geri yükle (YZ kararını geri al)",
+  "dashboardModerationAutoRejected": "YZ'nin kaldırdıkları (24 sa)",
+  "dashboardModerationUnscored": "Skorlanamayan",
+  "moderationMetricsTitle": "YZ moderasyon metrikleri",
+  "moderationMetricsSubtitle": "Model {model} · otomatik yayın < {approve} · inceleme {approve}–{reject} · otomatik kaldırma ≥ {reject}",
+  "@moderationMetricsSubtitle": {
+    "placeholders": {
+      "model": {
+        "type": "String"
+      },
+      "approve": {
+        "type": "String"
+      },
+      "reject": {
+        "type": "String"
+      }
+    }
+  },
+  "moderationMetricsPeriod": "Dönem",
+  "moderationMetricsDays": "Son {count} gün",
+  "@moderationMetricsDays": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "moderationMetricsBack": "Kuyruğa dön",
+  "moderationMetricsModeOff": "YZ moderasyonu kapalı (mod: {mode}). Metrikler yalnızca YZ modunda dolar.",
+  "@moderationMetricsModeOff": {
+    "placeholders": {
+      "mode": {
+        "type": "String"
+      }
+    }
+  },
+  "metricsShared": "Paylaşılan anı",
+  "metricsAutoApproved": "Otomatik yayınlanan",
+  "metricsReview": "İncelemeye düşen",
+  "metricsAutoRejected": "Otomatik kaldırılan",
+  "metricsUnscored": "Skorlanamayan",
+  "metricsShareOfTotal": "Toplamın %{percent}'i",
+  "@metricsShareOfTotal": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "metricsHumanReviewTitle": "İnsan incelemesi",
+  "metricsWaiting": "Kuyrukta bekleyen",
+  "metricsOldestWaiting": "En eski bekleyen",
+  "metricsDecided": "Karara bağlanan (inceleme bandı)",
+  "metricsReviewApproved": "Yayınlanan",
+  "metricsReviewRejected": "Kaldırılan",
+  "metricsMedianDecision": "Medyan karar süresi",
+  "metricsMinutes": "{count} dk",
+  "@metricsMinutes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "metricsHours": "{hours} sa {minutes} dk",
+  "@metricsHours": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "metricsDaysDuration": "{count} gün",
+  "@metricsDaysDuration": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "metricsAccuracyTitle": "Doğruluk (personel düzeltmeleri)",
+  "metricsAutoRejectRestored": "Geri yüklenen otomatik kaldırma",
+  "metricsAutoApproveRemoved": "Sonradan kaldırılan otomatik yayın",
+  "metricsOverrideRate": "YZ kaldırmalarında geri alma oranı",
+  "metricsReviewApprovalRate": "İncelemede yayınlanma oranı",
+  "metricsPercent": "%{percent}",
+  "@metricsPercent": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "metricsHistogramTitle": "Skor dağılımı ve bugünkü durum",
+  "metricsBinLabel": "{from}–{to} · {approved} yayında · {pending} bekleyen · {rejected} kaldırılan",
+  "@metricsBinLabel": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      },
+      "approved": {
+        "type": "int"
+      },
+      "pending": {
+        "type": "int"
+      },
+      "rejected": {
+        "type": "int"
+      }
+    }
+  },
+  "metricsCategoriesTitle": "İncelenen ve kaldırılanlarda kategori",
+  "metricsModelTitle": "Model ve eşikler",
+  "metricsModelVersion": "Model sürümü",
+  "metricsApproveThreshold": "Otomatik yayın",
+  "metricsRejectThreshold": "Otomatik kaldırma",
+  "metricsPhotoRule": "Fotoğraflı anılar",
+  "metricsPhotoRuleReview": "İncelemeye gönderilir",
+  "metricsPhotoRuleText": "Metne göre karar",
+  "metricsLatencyP50": "Skorlama süresi (medyan)",
+  "metricsLatencyP95": "Skorlama süresi (p95)",
+  "metricsMs": "{count} ms",
+  "@metricsMs": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "metricsDailyTitle": "Günlük karar dağılımı",
+  "metricsDayLine": "{approved} yayın · {review} inceleme · {rejected} kaldırma",
+  "@metricsDayLine": {
+    "placeholders": {
+      "approved": {
+        "type": "int"
+      },
+      "review": {
+        "type": "int"
+      },
+      "rejected": {
+        "type": "int"
+      }
+    }
+  },
+  "metricsNoData": "Bu dönemde YZ'nin değerlendirdiği anı yok.",
+  "editorTabParts": "Bölümler",
+  "editorPartsHelp": "VGM verisindeki bölümler (ör. cami ve medrese kısımları). Uygulamada eser sayfasında ayrı başlıklarla gösterilir; Türkçe metin zorunludur, İngilizce boşsa Türkçe gösterilir.",
+  "editorPartsEmpty": "Bölüm yok.",
+  "editorPartsError": "Her bölümün Türkçe metni olmalıdır.",
+  "editorPartTitle": "Bölüm {index}",
+  "@editorPartTitle": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      }
+    }
+  },
+  "editorPartRemove": "Bölümü kaldır",
+  "editorPartAdd": "Bölüm ekle",
+  "editorPartFieldTitleTr": "Başlık (Türkçe)",
+  "editorPartFieldTitleEn": "Başlık (İngilizce)",
+  "editorPartFieldDescriptionTr": "Metin (Türkçe)",
+  "editorPartFieldDescriptionEn": "Metin (İngilizce)",
+  "editorFieldNickname": "Halk arasındaki adı",
+  "editorImagePart": "Bölüm {index}",
+  "@editorImagePart": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      }
+    }
+  },
+  "catalogFilterLocation": "Konum",
+  "catalogLocationPresent": "Konumu girilmiş",
+  "catalogLocationMissing": "Konumu eksik",
+  "catalogNoLocation": "Konum yok",
+  "catalogImport": "İçe aktar",
+  "errorConflictImportImages": "Bazı görseller henüz yüklenmedi. İçe aktarımı yeniden başlatın; yalnızca eksik görseller gönderilir.",
+  "importTitle": "VGM verisini içe aktar",
+  "importSubtitle": "Eser ve külliye verisi (JSON) ile görsellerini kataloğa aktarır",
+  "importSourceTitle": "Kaynak klasör",
+  "importSourceHelp": "Veri dosyasını (root42-veri.json) ve images klasörünü içeren klasörü seçin. Görsel yolları veri dosyasına göredir.",
+  "importNoFolder": "Klasör seçilmedi",
+  "importPickFolder": "Klasör seç",
+  "importChangeFolder": "Klasörü değiştir",
+  "importNoJson": "Klasörde veri dosyası (.json) bulunamadı.",
+  "importJsonFile": "Veri dosyası",
+  "importLocalSummary": "{count} görsel dosyası okundu ({megabytes} MB).",
+  "@importLocalSummary": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "megabytes": {
+        "type": "String"
+      }
+    }
+  },
+  "importReading": "Dosyalar okunuyor ve görsel özetleri hesaplanıyor…",
+  "importPlanning": "Sunucu dosyayı denetliyor…",
+  "importPlanTitle": "İçe aktarım planı",
+  "importStatusValid": "Geçerli",
+  "importStatusInvalid": "Hatalı",
+  "importStatusCommitted": "Tamamlandı",
+  "importCountComplexes": "Külliye",
+  "importCountWorks": "Eser",
+  "importCountParts": "Bölüm",
+  "importCountImages": "Görsel",
+  "importCountImagesValue": "{total} ({unique} farklı dosya)",
+  "@importCountImagesValue": {
+    "placeholders": {
+      "total": {
+        "type": "int"
+      },
+      "unique": {
+        "type": "int"
+      }
+    }
+  },
+  "importCountNew": "Eklenecek kayıt",
+  "importCountExisting": "Güncellenecek kayıt",
+  "importCountMissingImages": "Yüklenecek görsel",
+  "importMergeNotice": "Var olan kayıtlarda panelde girilen konum, tarihçe, bani, mimar ve düzeltilmiş tür/dönem korunur. Veri dosyasında konum olmadığından yeni eserler konumu girilene kadar haritada görünmez.",
+  "importStart": "İçe aktar",
+  "importStartWithImages": "{count} görseli yükle ve içe aktar",
+  "@importStartWithImages": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "importCancel": "Durdur",
+  "importCancelling": "Sürmekte olan yüklemeler bitince durulacak…",
+  "importProgressTitle": "İlerleme",
+  "importUploadProgress": "{done} / {total} görsel yüklendi",
+  "@importUploadProgress": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "importUploadFailed": "{count} görsel yüklenemedi. Yeniden başlatınca yalnızca eksikler gönderilir.",
+  "@importUploadFailed": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "importCommitting": "Kayıtlar kataloğa yazılıyor…",
+  "importResultTitle": "Sonuç",
+  "importResultCreated": "Eklenen eser",
+  "importResultUpdated": "Güncellenen eser",
+  "importResultComplexesCreated": "Eklenen külliye",
+  "importResultComplexesUpdated": "Güncellenen külliye",
+  "importResultVersion": "Katalog sürümü",
+  "importOpenMissingLocation": "Konumu eksik eserleri aç",
+  "importErrorsTitle": "Hatalar ({count})",
+  "@importErrorsTitle": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "importWarningsTitle": "Uyarılar ({count})",
+  "@importWarningsTitle": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "importMoreIssues": "… ve {count} bulgu daha",
+  "@importMoreIssues": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "importPlanReady": "Dosya geçerli; içe aktarım planı hazır.",
+  "importPlanInvalid": "Dosyada hatalar var; içe aktarılamaz.",
+  "importDone": "İçe aktarım tamamlandı.",
+  "importLeaveTitle": "İçe aktarım sürüyor",
+  "importLeaveMessage": "Sayfadan çıkarsanız yükleme durur. Yüklenen görseller saklanır; yeniden başlatınca kalanlar gönderilir.",
+  "importIssueInvalidJson": "Dosya şemaya uygun JSON değil",
+  "importIssueMissingFile": "Görsel dosyası bulunamadı",
+  "importIssueFileTooLarge": "Görsel 5 MB'tan büyük",
+  "importIssueFormatVersion": "Desteklenmeyen biçim sürümü",
+  "importIssueRequired": "Zorunlu alan boş",
+  "importIssueTooLong": "Alan çok uzun",
+  "importIssueInvalidKey": "Geçersiz anahtar (küçük harf, rakam ve tire; en çok 111 karakter)",
+  "importIssueDuplicateKey": "Anahtar birden çok kez kullanılmış",
+  "importIssueSlug": "Geçersiz veya tekrarlanan kısa ad (slug)",
+  "importIssueUnknownCity": "Bilinmeyen il kodu",
+  "importIssueInvalidSrc": "Geçersiz görsel yolu",
+  "importIssueTooManyImages": "Çok fazla görsel",
+  "importIssueUnknownMember": "Külliyedeki eser dosyada yok",
+  "importIssueMemberTwice": "Eser iki külliyede birden",
+  "importIssueMemberCity": "Eserin ili külliyeninkinden farklı",
+  "importIssueDuplicateMember": "Külliyede aynı eser iki kez",
+  "importWarningRenamed": "Külliye anahtarı bir eserle aynı; kimliği değiştirildi",
+  "importWarningCategory": "Tür addan çıkarılamadı (Diğer)",
+  "importWarningDuplicateTitle": "Aynı adda başka eser var",
+  "importWarningNoDistrict": "İlçe adresten çıkarılamadı",
+  "importWarningNoImages": "Görseli yok",
+  "reportsFilterEvidence": "YZ kanıtı",
+  "reportsSortEvidence": "Aciliyet, sonra YZ kanıtı",
+  "reportSectionEvidence": "Yapay zekâ kanıt değerlendirmesi",
+  "evidenceLevelStrong": "Kanıt güçlü",
+  "evidenceLevelUnverified": "Doğrulanamadı",
+  "evidenceLevelSuspicious": "Şüpheli",
+  "evidenceLevelPending": "Değerlendirilmedi",
+  "evidenceChip": "YZ: {level}",
+  "@evidenceChip": {
+    "placeholders": {
+      "level": {
+        "type": "String"
+      }
+    }
+  },
+  "evidenceChipSemantics": "Yapay zekâ kanıt etiketi: {level}",
+  "@evidenceChipSemantics": {
+    "placeholders": {
+      "level": {
+        "type": "String"
+      }
+    }
+  },
+  "evidenceLevelLabel": "Etiket",
+  "evidenceHelpStrong": "Olumsuz işaret yok; en az iki bağımsız kanıt ya da bir bağımsız kanıt ve hasar tarif eden açıklama var. Önce bakılabilir.",
+  "evidenceHelpUnverified": "Olumsuz işaret yok ama kanıt zayıf. Normal inceleme.",
+  "evidenceHelpSuspicious": "Somut olumsuz işaret var ya da açıklama hasar tarif etmiyor ve hiçbir destek yok. Dikkatli bakın; aciliyet sırası değişmez.",
+  "evidenceHelpPending": "Bildirim henüz skorlanmadı; arka planda değerlendirilir (moderasyon servisi kapalıysa 24 saat boyunca yeniden denenir).",
+  "evidenceDisclaimer": "Etiket yalnızca yardımcıdır: durumu değiştirmez ve vatandaşa gösterilmez. YZ bildirimin doğru olup olmadığını bilemez, yalnızca kanıtın gücünü ölçer.",
+  "evidenceSupports": "Destekleyen",
+  "evidenceUndermines": "Zayıflatan",
+  "evidenceNeutral": "Bilgi",
+  "evidenceReasonSemantics": "{effect}: {reason}",
+  "@evidenceReasonSemantics": {
+    "placeholders": {
+      "effect": {
+        "type": "String"
+      },
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "evidenceLocationOnSite": "Konum yerinde: esere {distance} m",
+  "@evidenceLocationOnSite": {
+    "placeholders": {
+      "distance": {
+        "type": "int"
+      }
+    }
+  },
+  "evidenceLocationDistant": "Konum eserden uzak: {distance} m",
+  "@evidenceLocationDistant": {
+    "placeholders": {
+      "distance": {
+        "type": "int"
+      }
+    }
+  },
+  "evidenceLocationNotProvided": "Konum eklenmemiş",
+  "evidenceCorroborated": "Son 14 günde {count} başka hesaptan aynı esere bildirim",
+  "@evidenceCorroborated": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "evidencePhotoMatches": "Fotoğraf eserin katalog görsellerine benziyor (benzerlik {score})",
+  "@evidencePhotoMatches": {
+    "placeholders": {
+      "score": {
+        "type": "String"
+      }
+    }
+  },
+  "evidencePhotoLowSimilarity": "Fotoğraf katalog görsellerine benzemiyor (benzerlik {score}); hasar yakın çekimi olabilir, olumsuz sayılmaz",
+  "@evidencePhotoLowSimilarity": {
+    "placeholders": {
+      "score": {
+        "type": "String"
+      }
+    }
+  },
+  "evidencePhotoNone": "Fotoğraf eklenmemiş",
+  "evidencePhotoUnreadable": "{count} fotoğraf okunamadı",
+  "@evidencePhotoUnreadable": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "evidencePhotoCatalogCopy": "Fotoğraf bir katalog görselinin kopyası olabilir (benzerlik {score})",
+  "@evidencePhotoCatalogCopy": {
+    "placeholders": {
+      "score": {
+        "type": "String"
+      }
+    }
+  },
+  "evidencePhotoNsfw": "Müstehcen fotoğraf (olasılık {score})",
+  "@evidencePhotoNsfw": {
+    "placeholders": {
+      "score": {
+        "type": "String"
+      }
+    }
+  },
+  "evidenceTextDescribesDamage": "Açıklama hasar tarif ediyor (skor {score})",
+  "@evidenceTextDescribesDamage": {
+    "placeholders": {
+      "score": {
+        "type": "String"
+      }
+    }
+  },
+  "evidenceTextWeakDamage": "Açıklamanın hasar tarifi belirsiz (skor {score})",
+  "@evidenceTextWeakDamage": {
+    "placeholders": {
+      "score": {
+        "type": "String"
+      }
+    }
+  },
+  "evidenceTextNotDamage": "Açıklama hasar tarif etmiyor (skor {score})",
+  "@evidenceTextNotDamage": {
+    "placeholders": {
+      "score": {
+        "type": "String"
+      }
+    }
+  },
+  "evidenceTextAbusive": "Açıklamada hakaret / zararlı dil (skor {score})",
+  "@evidenceTextAbusive": {
+    "placeholders": {
+      "score": {
+        "type": "String"
+      }
+    }
+  },
+  "evidenceTextSpam": "Açıklama spam kuralına uyuyor: {signals}",
+  "@evidenceTextSpam": {
+    "placeholders": {
+      "signals": {
+        "type": "String"
+      }
+    }
+  },
+  "evidenceTextContact": "Açıklamada iletişim bilgisi var ({signals}); kişisel veri olabilir",
+  "@evidenceTextContact": {
+    "placeholders": {
+      "signals": {
+        "type": "String"
+      }
+    }
+  },
+  "evidenceCategorySuggested": "Açıklama başka bir türe daha yakın: {category} (yalnızca öneri)",
+  "@evidenceCategorySuggested": {
+    "placeholders": {
+      "category": {
+        "type": "String"
+      }
+    }
+  },
+  "evidenceUrgencyUnsupported": "Aciliyet \"{urgency}\" ama bağımsız kanıt yok (sıra değişmez)",
+  "@evidenceUrgencyUnsupported": {
+    "placeholders": {
+      "urgency": {
+        "type": "String"
+      }
+    }
+  },
+  "evidenceUnknown": "Diğer sinyal: {code}",
+  "@evidenceUnknown": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "dashboardOpenByEvidence": "Açık bildirimler, YZ kanıtına göre",
+  "aiSpamSignalContact": "iletişim bilgisi",
+  "aiSpamSignalPromotion": "ticari teklif",
+  "aiSpamSignalScam": "dolandırıcılık kalıbı",
+  "aiCategoryNsfw": "Müstehcen fotoğraf",
+  "aiCategoryUnrelated": "Eserle ilgisiz",
+  "aiCategorySpam": "Spam / reklam",
+  "aiReviewCauseNsfw": "Fotoğraf müstehcen olabilir",
+  "aiReviewCauseSpam": "İletişim bilgisi var (olası spam)",
+  "aiReviewCauseUnrelated": "Fotoğraf esere benzemiyor",
+  "aiReviewCauseContext": "Metnin eserle bağlamı zayıf",
+  "aiSpamLabel": "Spam skoru",
+  "aiSpamSignalsLabel": "Eşleşen spam kuralları",
+  "aiRelevanceLabel": "Metnin eserle bağlamı",
+  "aiNsfwLabel": "Müstehcenlik (en yüksek fotoğraf)",
+  "aiSimilarityLabel": "Esere benzerlik (en düşük fotoğraf)",
+  "aiVisionModelLabel": "Görsel model",
+  "aiContextModelLabel": "Bağlam indeksi",
+  "aiPhotoScores": "Fotoğraf skorları",
+  "aiPhotoLabel": "Fotoğraf {index}",
+  "@aiPhotoLabel": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      }
+    }
+  },
+  "aiPhotoScoresValue": "müstehcenlik {nsfw} · esere benzerlik {similarity}",
+  "@aiPhotoScoresValue": {
+    "placeholders": {
+      "nsfw": {
+        "type": "String"
+      },
+      "similarity": {
+        "type": "String"
+      }
+    }
+  },
+  "aiPhotoNoReference": "referans görseli yok",
+  "aiPhotoUnreadable": "okunamadı"
+}

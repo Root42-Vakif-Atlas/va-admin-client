@@ -1,0 +1,85 @@
+name: vakif_atlas_admin
+description: "Vakıf Atlas Yönetim — VGM personeli için masaüstü yönetim istemcisi (katalog, Sivil Koruma incelemesi, Anı Köşesi moderasyonu, geri bildirim)."
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.13.5
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  # State management
+  bloc: ^9.2.1
+  bloc_concurrency: ^0.3.0
+  flutter_bloc: ^9.1.1
+
+  # DI + routing
+  get_it: ^9.3.0
+  go_router: ^18.1.0
+  injectable: ^3.0.0
+
+  # Network
+  connectivity_plus: ^7.3.2
+  crypto: ^3.0.7
+  dio: ^5.11.1
+  package_info_plus: ^10.2.2
+  uuid: ^4.6.0
+
+  # Storage
+  flutter_secure_storage: ^11.2.0
+  hive_ce: ^2.22.0
+  hive_ce_flutter: ^2.5.0
+  shared_preferences: ^2.5.6
+
+  # Admin: katalog görselleri (sistem dosya seçicisi + cihazda JPEG'e kodlama),
+  # Authenticator kurulumu (QR), harici bağlantı (konumu OpenStreetMap'te aç).
+  file_selector: ^1.0.3
+  image: ^4.12.0
+  qr_flutter: ^4.1.0
+  url_launcher: ^6.3.2
+
+  # Code gen annotations
+  freezed_annotation: ^3.1.0
+  intl: any
+  json_annotation: ^4.12.0
+
+  # Observability
+  logger: ^2.8.0
+  path: ^1.9.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  integration_test:
+    sdk: flutter
+
+  flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.14.0
+
+  build_runner: ^2.16.1
+  freezed: ^4.0.1
+  injectable_generator: ^3.1.3
+  json_serializable: ^6.14.1
+
+  # Yalnızca tool/generate_palette_test.dart (HCT paleti; sürümü Flutter SDK sabitler).
+  material_color_utilities: any
+  bloc_test: ^10.0.0
+  mocktail: ^1.0.5
+
+flutter:
+  uses-material-design: true
+  generate: true
+
+  assets:
+    - assets/fonts/inter/OFL.txt
+
+  # Fontlar paketlenir (ADR 5): çalışma anında ağa çıkılmaz.
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/inter/Inter-Variable.ttf

@@ -1,0 +1,4 @@
+# Vakıf Atlas — VGM Yönetim Paneli (Flutter masaüstü). `mise install` ile kurulur.
+[tools]
+flutter = "3.47.7"       # vatandaş uygulamasıyla aynı SDK (Dart 3.13.5 — pubspec `sdk: ^3.13.5`)
+java = "temurin-17"      # Android Gradle: source/target ve jvmTarget 17
