@@ -46,6 +46,10 @@ run-prod: ## Production
 backend-e2e: ## Uygulamanın kendisini çalışan backend'e karşı uçtan uca dene (ekran görüntüleri build/e2e_shots)
 	flutter test tool/backend_app_e2e_test.dart
 
+macos-release:
+	flutter build macos --release -t lib/main_dev.dart --dart-define-from-file=config/remote.json
+	cp -R build/macos/Build/Products/Release/*.app /Applications/
+
 # Release derlemeleri: ENV=dev|staging|prod; CONFIG CI'da secret'lardan üretilir.
 ENV ?= staging
 CONFIG ?= config/$(ENV).json
