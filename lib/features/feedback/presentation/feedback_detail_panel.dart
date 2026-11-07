@@ -19,6 +19,8 @@ import 'package:vakif_atlas_admin/shared/widgets/molecules/detail_section.dart';
 import 'package:vakif_atlas_admin/shared/widgets/molecules/inline_message.dart';
 import 'package:vakif_atlas_admin/shared/widgets/templates/loading_status_view.dart';
 import 'package:vakif_atlas_admin/shared/widgets/templates/status_message_view.dart';
+import 'package:vakif_atlas_admin/shared/widgets/templates/master_detail_layout.dart';
+import 'package:vakif_atlas_admin/core/theme/responsive.dart';
 
 class FeedbackDetailPanel extends StatelessWidget {
   const FeedbackDetailPanel({
@@ -74,7 +76,7 @@ class FeedbackDetailPanel extends StatelessWidget {
           );
         }
         return ListView(
-          padding: const EdgeInsets.all(AppSpacing.lg),
+          padding: EdgeInsets.all(context.pageGutter),
           children: [
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -103,11 +105,7 @@ class FeedbackDetailPanel extends StatelessWidget {
                     ],
                   ),
                 ),
-                IconButton(
-                  tooltip: l10n.commonClose,
-                  onPressed: onClose,
-                  icon: const Icon(Icons.close),
-                ),
+                DetailCloseButton(onPressed: onClose),
               ],
             ),
             const SizedBox(height: AppSpacing.lg),

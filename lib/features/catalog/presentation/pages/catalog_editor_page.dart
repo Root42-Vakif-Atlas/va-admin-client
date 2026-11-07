@@ -27,6 +27,7 @@ import 'package:vakif_atlas_admin/shared/widgets/molecules/status_chip.dart';
 import 'package:vakif_atlas_admin/shared/widgets/templates/admin_page.dart';
 import 'package:vakif_atlas_admin/shared/widgets/templates/loading_status_view.dart';
 import 'package:vakif_atlas_admin/shared/widgets/templates/status_message_view.dart';
+import 'package:vakif_atlas_admin/core/theme/responsive.dart';
 
 /// Eser düzenleyicisi (oluşturma ve düzenleme). Kaydedilmemiş değişiklik
 /// [onDirtyChanged] ile yönlendiriciye bildirilir (çıkışta onay).
@@ -329,7 +330,7 @@ class _CatalogEditorPageState extends State<CatalogEditorPage> {
                     children: [
                       for (final (_, _, tab) in tabs)
                         SingleChildScrollView(
-                          padding: const EdgeInsets.all(AppSpacing.lg),
+                          padding: EdgeInsets.all(context.pageGutter),
                           child: Align(
                             alignment: AlignmentDirectional.topStart,
                             child: ConstrainedBox(
@@ -562,39 +563,33 @@ class _GeneralTab extends StatelessWidget {
           ),
           const SizedBox(height: AppSpacing.md),
         ],
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        ResponsiveFieldRow(
           children: [
-            Expanded(
-              child: DropdownMenu<int>(
-                label: Text(l10n.editorFieldCity),
-                initialSelection: draft.cityCode,
-                expandedInsets: EdgeInsets.zero,
-                enableFilter: true,
-                requestFocusOnTap: true,
-                errorText: error(MonumentField.city, required),
-                onSelected: (code) {
-                  if (code != null) {
-                    cubit.edit((d) => d.copyWith(cityCode: code));
-                  }
-                },
-                dropdownMenuEntries: [
-                  for (final MapEntry(key: code, value: name)
-                      in TurkishProvinces.names.entries)
-                    DropdownMenuEntry(value: code, label: name),
-                ],
-              ),
+            DropdownMenu<int>(
+              label: Text(l10n.editorFieldCity),
+              initialSelection: draft.cityCode,
+              expandedInsets: EdgeInsets.zero,
+              enableFilter: true,
+              requestFocusOnTap: true,
+              errorText: error(MonumentField.city, required),
+              onSelected: (code) {
+                if (code != null) {
+                  cubit.edit((d) => d.copyWith(cityCode: code));
+                }
+              },
+              dropdownMenuEntries: [
+                for (final MapEntry(key: code, value: name)
+                    in TurkishProvinces.names.entries)
+                  DropdownMenuEntry(value: code, label: name),
+              ],
             ),
-            const SizedBox(width: AppSpacing.md),
-            Expanded(
-              child: _BoundField(
-                label: l10n.editorFieldDistrict,
-                initial: draft.district,
-                maxLength: MonumentValidation.maxDistrict,
-                error: error(MonumentField.district, required),
-                onChanged: (value) =>
-                    cubit.edit((d) => d.copyWith(district: value)),
-              ),
+            _BoundField(
+              label: l10n.editorFieldDistrict,
+              initial: draft.district,
+              maxLength: MonumentValidation.maxDistrict,
+              error: error(MonumentField.district, required),
+              onChanged: (value) =>
+                  cubit.edit((d) => d.copyWith(district: value)),
             ),
           ],
         ),
@@ -605,41 +600,35 @@ class _GeneralTab extends StatelessWidget {
           maxLines: 3,
           onChanged: (value) => cubit.edit((d) => d.copyWith(address: value)),
         ),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        ResponsiveFieldRow(
           children: [
-            Expanded(
-              child: _BoundField(
-                label: l10n.editorFieldLatitude,
-                initial: draft.latitude?.toString() ?? '',
-                keyboardType: const TextInputType.numberWithOptions(
-                  decimal: true,
-                  signed: true,
-                ),
-                inputFormatters: decimal,
-                helper: l10n.editorFieldLocationHelp,
-                error: error(
-                  MonumentField.location,
-                  l10n.editorFieldLocationError,
-                ),
-                onChanged: (value) => cubit.edit(
-                  (d) => d.copyWith(latitude: () => double.tryParse(value)),
-                ),
+            _BoundField(
+              label: l10n.editorFieldLatitude,
+              initial: draft.latitude?.toString() ?? '',
+              keyboardType: const TextInputType.numberWithOptions(
+                decimal: true,
+                signed: true,
+              ),
+              inputFormatters: decimal,
+              helper: l10n.editorFieldLocationHelp,
+              error: error(
+                MonumentField.location,
+                l10n.editorFieldLocationError,
+              ),
+              onChanged: (value) => cubit.edit(
+                (d) => d.copyWith(latitude: () => double.tryParse(value)),
               ),
             ),
-            const SizedBox(width: AppSpacing.md),
-            Expanded(
-              child: _BoundField(
-                label: l10n.editorFieldLongitude,
-                initial: draft.longitude?.toString() ?? '',
-                keyboardType: const TextInputType.numberWithOptions(
-                  decimal: true,
-                  signed: true,
-                ),
-                inputFormatters: decimal,
-                onChanged: (value) => cubit.edit(
-                  (d) => d.copyWith(longitude: () => double.tryParse(value)),
-                ),
+            _BoundField(
+              label: l10n.editorFieldLongitude,
+              initial: draft.longitude?.toString() ?? '',
+              keyboardType: const TextInputType.numberWithOptions(
+                decimal: true,
+                signed: true,
+              ),
+              inputFormatters: decimal,
+              onChanged: (value) => cubit.edit(
+                (d) => d.copyWith(longitude: () => double.tryParse(value)),
               ),
             ),
           ],
@@ -807,33 +796,23 @@ class _TextTab extends StatelessWidget {
           maxLines: 10,
           onChanged: (value) => update((t) => t.copyWith(history: value)),
         ),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        ResponsiveFieldRow(
           children: [
-            Expanded(
-              child: _BoundField(
-                label: l10n.editorFieldConstructionDate,
-                initial: text.constructionDate,
-                onChanged: (value) =>
-                    update((t) => t.copyWith(constructionDate: value)),
-              ),
+            _BoundField(
+              label: l10n.editorFieldConstructionDate,
+              initial: text.constructionDate,
+              onChanged: (value) =>
+                  update((t) => t.copyWith(constructionDate: value)),
             ),
-            const SizedBox(width: AppSpacing.md),
-            Expanded(
-              child: _BoundField(
-                label: l10n.editorFieldFounder,
-                initial: text.founder,
-                onChanged: (value) => update((t) => t.copyWith(founder: value)),
-              ),
+            _BoundField(
+              label: l10n.editorFieldFounder,
+              initial: text.founder,
+              onChanged: (value) => update((t) => t.copyWith(founder: value)),
             ),
-            const SizedBox(width: AppSpacing.md),
-            Expanded(
-              child: _BoundField(
-                label: l10n.editorFieldArchitect,
-                initial: text.architect,
-                onChanged: (value) =>
-                    update((t) => t.copyWith(architect: value)),
-              ),
+            _BoundField(
+              label: l10n.editorFieldArchitect,
+              initial: text.architect,
+              onChanged: (value) => update((t) => t.copyWith(architect: value)),
             ),
           ],
         ),
@@ -892,27 +871,21 @@ class _PartsTab extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                ResponsiveFieldRow(
                   children: [
-                    Expanded(
-                      child: _BoundField(
-                        label: l10n.editorPartFieldTitleTr,
-                        initial: parts[index].titleTr,
-                        maxLength: MonumentValidation.maxName,
-                        onChanged: (value) =>
-                            update(index, (p) => p.copyWith(titleTr: value)),
-                      ),
+                    _BoundField(
+                      label: l10n.editorPartFieldTitleTr,
+                      initial: parts[index].titleTr,
+                      maxLength: MonumentValidation.maxName,
+                      onChanged: (value) =>
+                          update(index, (p) => p.copyWith(titleTr: value)),
                     ),
-                    const SizedBox(width: AppSpacing.md),
-                    Expanded(
-                      child: _BoundField(
-                        label: l10n.editorPartFieldTitleEn,
-                        initial: parts[index].titleEn,
-                        maxLength: MonumentValidation.maxName,
-                        onChanged: (value) =>
-                            update(index, (p) => p.copyWith(titleEn: value)),
-                      ),
+                    _BoundField(
+                      label: l10n.editorPartFieldTitleEn,
+                      initial: parts[index].titleEn,
+                      maxLength: MonumentValidation.maxName,
+                      onChanged: (value) =>
+                          update(index, (p) => p.copyWith(titleEn: value)),
                     ),
                   ],
                 ),
@@ -1087,6 +1060,10 @@ class _ImageCard extends StatelessWidget {
 
   static const double _preview = 160;
 
+  /// Bu genişliğin altında önizleme alanların üstündedir.
+
+  static const double _stackBelow = 520;
+
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
@@ -1123,10 +1100,10 @@ class _ImageCard extends StatelessWidget {
           ),
         ],
       ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ClipRRect(
+      // Dar kartta önizleme alanların üstüne geçer.
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final thumbnail = ClipRRect(
             borderRadius: BorderRadius.circular(AppRadius.sm),
             child: SizedBox(
               width: _preview,
@@ -1142,78 +1119,81 @@ class _ImageCard extends StatelessWidget {
                       semanticsLabel: image.altTr,
                     ),
             ),
-          ),
-          const SizedBox(width: AppSpacing.md),
-          Expanded(
-            child: Column(
+          );
+          final fields = Column(
+            children: [
+              _BoundField(
+                label: l10n.editorImageAltTr,
+                initial: image.altTr,
+                maxLength: 250,
+                error: missing(image.altTr),
+                onChanged: (value) =>
+                    onChanged((i) => i.copyWith(altTr: value)),
+              ),
+              _BoundField(
+                label: l10n.editorImageAltEn,
+                initial: image.altEn,
+                maxLength: 250,
+                error: missing(image.altEn),
+                onChanged: (value) =>
+                    onChanged((i) => i.copyWith(altEn: value)),
+              ),
+              ResponsiveFieldRow(
+                children: [
+                  _BoundField(
+                    label: l10n.editorImageAuthor,
+                    initial: image.author,
+                    error: missing(image.author),
+                    onChanged: (value) =>
+                        onChanged((i) => i.copyWith(author: value)),
+                  ),
+                  _BoundField(
+                    label: l10n.editorImageLicense,
+                    initial: image.license,
+                    error: missing(image.license),
+                    onChanged: (value) =>
+                        onChanged((i) => i.copyWith(license: value)),
+                  ),
+                ],
+              ),
+              ResponsiveFieldRow(
+                children: [
+                  _BoundField(
+                    label: l10n.editorImageSourceName,
+                    initial: image.sourceName,
+                    onChanged: (value) =>
+                        onChanged((i) => i.copyWith(sourceName: value)),
+                  ),
+                  _BoundField(
+                    label: l10n.editorImageSourceUrl,
+                    initial: image.sourceUrl,
+                    keyboardType: TextInputType.url,
+                    onChanged: (value) =>
+                        onChanged((i) => i.copyWith(sourceUrl: value)),
+                  ),
+                ],
+              ),
+            ],
+          );
+          if (constraints.maxWidth < _stackBelow) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _BoundField(
-                  label: l10n.editorImageAltTr,
-                  initial: image.altTr,
-                  maxLength: 250,
-                  error: missing(image.altTr),
-                  onChanged: (value) =>
-                      onChanged((i) => i.copyWith(altTr: value)),
-                ),
-                _BoundField(
-                  label: l10n.editorImageAltEn,
-                  initial: image.altEn,
-                  maxLength: 250,
-                  error: missing(image.altEn),
-                  onChanged: (value) =>
-                      onChanged((i) => i.copyWith(altEn: value)),
-                ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      child: _BoundField(
-                        label: l10n.editorImageAuthor,
-                        initial: image.author,
-                        error: missing(image.author),
-                        onChanged: (value) =>
-                            onChanged((i) => i.copyWith(author: value)),
-                      ),
-                    ),
-                    const SizedBox(width: AppSpacing.sm),
-                    Expanded(
-                      child: _BoundField(
-                        label: l10n.editorImageLicense,
-                        initial: image.license,
-                        error: missing(image.license),
-                        onChanged: (value) =>
-                            onChanged((i) => i.copyWith(license: value)),
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      child: _BoundField(
-                        label: l10n.editorImageSourceName,
-                        initial: image.sourceName,
-                        onChanged: (value) =>
-                            onChanged((i) => i.copyWith(sourceName: value)),
-                      ),
-                    ),
-                    const SizedBox(width: AppSpacing.sm),
-                    Expanded(
-                      child: _BoundField(
-                        label: l10n.editorImageSourceUrl,
-                        initial: image.sourceUrl,
-                        keyboardType: TextInputType.url,
-                        onChanged: (value) =>
-                            onChanged((i) => i.copyWith(sourceUrl: value)),
-                      ),
-                    ),
-                  ],
-                ),
+                thumbnail,
+                const SizedBox(height: AppSpacing.md),
+                fields,
               ],
-            ),
-          ),
-        ],
+            );
+          }
+          return Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              thumbnail,
+              const SizedBox(width: AppSpacing.md),
+              Expanded(child: fields),
+            ],
+          );
+        },
       ),
     );
   }

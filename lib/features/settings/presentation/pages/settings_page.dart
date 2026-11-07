@@ -13,6 +13,7 @@ import 'package:vakif_atlas_admin/features/settings/presentation/cubit/app_setti
 import 'package:vakif_atlas_admin/shared/widgets/atoms/brand_emblem.dart';
 import 'package:vakif_atlas_admin/shared/widgets/molecules/detail_section.dart';
 import 'package:vakif_atlas_admin/shared/widgets/templates/admin_page.dart';
+import 'package:vakif_atlas_admin/core/theme/responsive.dart';
 
 /// Görünüm, dil ve temel erişilebilirlik tercihleri (anında uygulanır) +
 /// klavye kısayolları ve sürüm.
@@ -36,7 +37,7 @@ class SettingsPage extends StatelessWidget {
     return AdminPage(
       title: l10n.settingsTitle,
       child: SingleChildScrollView(
-        padding: const EdgeInsets.all(AppSpacing.lg),
+        padding: EdgeInsets.all(context.pageGutter),
         child: Align(
           alignment: AlignmentDirectional.topStart,
           child: ConstrainedBox(

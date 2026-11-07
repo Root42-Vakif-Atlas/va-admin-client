@@ -6,6 +6,7 @@ import 'package:vakif_atlas_admin/core/a11y/a11y_announcer.dart';
 import 'package:vakif_atlas_admin/core/keyboard/app_shortcuts.dart';
 import 'package:vakif_atlas_admin/core/l10n/failure_messages.dart';
 import 'package:vakif_atlas_admin/core/l10n/l10n.dart';
+import 'package:vakif_atlas_admin/core/theme/responsive.dart';
 import 'package:vakif_atlas_admin/core/utils/idempotency.dart';
 import 'package:vakif_atlas_admin/core/theme/theme_context.dart';
 import 'package:vakif_atlas_admin/core/theme/tokens/app_spacing.dart';
@@ -92,13 +93,12 @@ class _StaffPageState extends State<StaffPage> {
         RefreshIntent: CallbackAction<RefreshIntent>(
           onInvoke: (_) => unawaited(cubit.refresh()),
         ),
-        CloseDetailIntent: CallbackAction<CloseDetailIntent>(
-          onInvoke: (_) => widget.onSelect(null),
-        ),
+        DismissIntent: CloseDetailAction(() => widget.onSelect(null)),
       },
       child: Focus(
         autofocus: true,
         child: AdminPage(
+          showHeader: context.isSplitView || widget.selectedId == null,
           title: l10n.staffTitle,
           subtitle: l10n.staffSubtitle,
           actions: [
@@ -114,21 +114,15 @@ class _StaffPageState extends State<StaffPage> {
             buildWhen: (previous, current) => previous.filter != current.filter,
             builder: (context, state) {
               final filter = state.filter;
-              return Wrap(
-                spacing: AppSpacing.md,
-                runSpacing: AppSpacing.sm,
-                crossAxisAlignment: WrapCrossAlignment.center,
+              return FilterToolbar(
+                search: SearchField(
+                  label: l10n.staffSearch,
+                  initialValue: filter.query,
+                  focusNode: _searchFocus,
+                  onChanged: (query) =>
+                      update(cubit.state.filter.copyWith(query: query)),
+                ),
                 children: [
-                  SizedBox(
-                    width: 320,
-                    child: SearchField(
-                      label: l10n.staffSearch,
-                      initialValue: filter.query,
-                      focusNode: _searchFocus,
-                      onChanged: (query) =>
-                          update(cubit.state.filter.copyWith(query: query)),
-                    ),
-                  ),
                   FilterMenu<StaffRole>(
                     label: l10n.staffFilterRole,
                     multiple: false,
@@ -169,6 +163,7 @@ class _StaffPageState extends State<StaffPage> {
             },
           ),
           child: MasterDetailLayout(
+            onCloseDetail: () => widget.onSelect(null),
             masterLabel: l10n.staffListLabel,
             detailLabel: l10n.staffDetailLabel,
             master: BlocBuilder<StaffListCubit, _ListState>(

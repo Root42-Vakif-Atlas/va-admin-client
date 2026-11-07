@@ -132,25 +132,23 @@ class _AuditPageState extends State<AuditPage> {
             builder: (context, state) {
               final filter = state.filter;
               return FilterToolbar(
-                children: [
-                  SizedBox(
-                    width: 280,
-                    child: SearchField(
-                      label: l10n.auditTargetSearch,
-                      initialValue: filter.targetId,
-                      focusNode: _searchFocus,
-                      onChanged: (id) => unawaited(
-                        cubit.load(
-                          AuditFilter(
-                            service: cubit.state.filter.service,
-                            targetId: id,
-                            from: cubit.state.filter.from,
-                            to: cubit.state.filter.to,
-                          ),
-                        ),
+                searchWidth: 280,
+                search: SearchField(
+                  label: l10n.auditTargetSearch,
+                  initialValue: filter.targetId,
+                  focusNode: _searchFocus,
+                  onChanged: (id) => unawaited(
+                    cubit.load(
+                      AuditFilter(
+                        service: cubit.state.filter.service,
+                        targetId: id,
+                        from: cubit.state.filter.from,
+                        to: cubit.state.filter.to,
                       ),
                     ),
                   ),
+                ),
+                children: [
                   FilterMenu<String>(
                     label: l10n.auditFilterService,
                     multiple: false,

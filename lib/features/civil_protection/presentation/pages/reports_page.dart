@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vakif_atlas_admin/core/keyboard/app_shortcuts.dart';
 import 'package:vakif_atlas_admin/core/l10n/failure_messages.dart';
 import 'package:vakif_atlas_admin/core/l10n/l10n.dart';
+import 'package:vakif_atlas_admin/core/theme/responsive.dart';
 import 'package:vakif_atlas_admin/features/civil_protection/domain/entities/damage_report.dart';
 import 'package:vakif_atlas_admin/features/civil_protection/presentation/cubit/reports_cubits.dart';
 import 'package:vakif_atlas_admin/features/civil_protection/presentation/widgets/report_labels.dart';
@@ -64,13 +65,12 @@ class _ReportsPageState extends State<ReportsPage> {
         RefreshIntent: CallbackAction<RefreshIntent>(
           onInvoke: (_) => unawaited(cubit.refresh()),
         ),
-        CloseDetailIntent: CallbackAction<CloseDetailIntent>(
-          onInvoke: (_) => widget.onSelect(null),
-        ),
+        DismissIntent: CloseDetailAction(() => widget.onSelect(null)),
       },
       child: Focus(
         autofocus: true,
         child: AdminPage(
+          showHeader: context.isSplitView || widget.selectedId == null,
           title: l10n.reportsTitle,
           subtitle: l10n.reportsSubtitle,
           actions: [
@@ -96,6 +96,7 @@ class _ReportsPageState extends State<ReportsPage> {
                 ),
               ),
           child: MasterDetailLayout(
+            onCloseDetail: () => widget.onSelect(null),
             masterLabel: l10n.reportsListLabel,
             detailLabel: l10n.reportsDetailLabel,
             master:
@@ -152,16 +153,13 @@ class _Filters extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     return FilterToolbar(
+      search: SearchField(
+        label: l10n.reportsSearch,
+        initialValue: filter.query,
+        focusNode: searchFocus,
+        onChanged: (query) => onChanged((f) => f.copyWith(query: query)),
+      ),
       children: [
-        SizedBox(
-          width: 320,
-          child: SearchField(
-            label: l10n.reportsSearch,
-            initialValue: filter.query,
-            focusNode: searchFocus,
-            onChanged: (query) => onChanged((f) => f.copyWith(query: query)),
-          ),
-        ),
         FilterMenu<Object>(
           label: l10n.reportsFilterStatus,
           options: [

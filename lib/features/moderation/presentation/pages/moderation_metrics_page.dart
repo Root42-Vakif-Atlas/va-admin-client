@@ -17,6 +17,7 @@ import 'package:vakif_atlas_admin/shared/widgets/organisms/metric_widgets.dart';
 import 'package:vakif_atlas_admin/shared/widgets/templates/admin_page.dart';
 import 'package:vakif_atlas_admin/shared/widgets/templates/loading_status_view.dart';
 import 'package:vakif_atlas_admin/shared/widgets/templates/status_message_view.dart';
+import 'package:vakif_atlas_admin/core/theme/responsive.dart';
 
 /// YZ moderasyon metrikleri (ADR 58): karar dağılımı, insan incelemesi,
 /// personel düzeltmeleri (doğruluk vekili), skor histogramı, kategori ve
@@ -298,7 +299,7 @@ class _MetricsBody extends StatelessWidget {
     ];
 
     return ListView(
-      padding: const EdgeInsets.all(AppSpacing.lg),
+      padding: EdgeInsets.all(context.pageGutter),
       children: [
         if (metrics.mode != 'ai') ...[
           Text(

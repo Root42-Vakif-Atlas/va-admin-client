@@ -18,6 +18,7 @@ import 'package:vakif_atlas_admin/features/feedback/presentation/feedback_labels
 import 'package:vakif_atlas_admin/shared/widgets/organisms/metric_widgets.dart';
 import 'package:vakif_atlas_admin/shared/widgets/templates/admin_page.dart';
 import 'package:vakif_atlas_admin/shared/widgets/templates/status_message_view.dart';
+import 'package:vakif_atlas_admin/core/theme/responsive.dart';
 
 /// Hedef kuyruk (süzgeçli).
 enum DashboardTarget {
@@ -119,10 +120,10 @@ class DashboardPage extends StatelessWidget {
                   message: l10n.dashboardNoSections,
                 )
               : SingleChildScrollView(
-                  padding: const EdgeInsets.fromLTRB(
-                    AppSpacing.lg,
+                  padding: EdgeInsets.fromLTRB(
+                    context.pageGutter,
                     AppSpacing.xs,
-                    AppSpacing.lg,
+                    context.pageGutter,
                     AppSpacing.lg,
                   ),
                   child: Column(

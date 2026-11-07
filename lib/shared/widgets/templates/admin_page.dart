@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:vakif_atlas_admin/core/theme/responsive.dart';
 import 'package:vakif_atlas_admin/core/theme/theme_context.dart';
 import 'package:vakif_atlas_admin/core/theme/tokens/app_spacing.dart';
 
 /// Yönetim sayfası iskeleti: başlık (sayfanın ilk başlık düğümü), isteğe
 /// bağlı açıklama ve eylemler; altında gövde. Kabuğun içinde çizilir.
+///
+/// Kenar boşluğu pencereye göre değişir (telefonda 16, diğerlerinde 24 px);
+/// telefonda açıklama gizlenir (başlık kabuk çubuğunda da yazılıdır) ve
+/// başlık bir boy küçülür.
 class AdminPage extends StatelessWidget {
   const AdminPage({
     required this.title,
@@ -12,6 +17,7 @@ class AdminPage extends StatelessWidget {
     this.actions = const [],
     this.toolbar,
     this.dividerBelowHeader = true,
+    this.showHeader = true,
     super.key,
   });
 
@@ -24,23 +30,27 @@ class AdminPage extends StatelessWidget {
 
   /// `false` → gövde kendi çerçevesini çizer (ör. tablo kartı).
   final bool dividerBelowHeader;
+
+  /// `false` → başlık, eylemler ve araç çubuğu çizilmez; gövde tüm alanı
+  /// kullanır (dar pencerede tam sayfa ayrıntı).
+  final bool showHeader;
   final Widget child;
 
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
+    final gutter = context.pageGutter;
+    final compact = context.isCompact;
+    if (!showHeader) {
+      return Material(color: colors.surface, child: child);
+    }
     return Material(
       color: colors.surface,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Padding(
-            padding: const EdgeInsets.fromLTRB(
-              AppSpacing.lg,
-              AppSpacing.lg,
-              AppSpacing.lg,
-              AppSpacing.sm,
-            ),
+            padding: EdgeInsets.fromLTRB(gutter, gutter, gutter, AppSpacing.sm),
             child: Wrap(
               alignment: WrapAlignment.spaceBetween,
               crossAxisAlignment: WrapCrossAlignment.center,
@@ -55,10 +65,12 @@ class AdminPage extends StatelessWidget {
                       header: true,
                       child: Text(
                         title,
-                        style: context.textStyles.headlineMedium,
+                        style: compact
+                            ? context.textStyles.titleLarge
+                            : context.textStyles.headlineMedium,
                       ),
                     ),
-                    if (subtitle != null) ...[
+                    if (subtitle != null && !compact) ...[
                       const SizedBox(height: AppSpacing.xxs),
                       Text(
                         subtitle!,
@@ -80,12 +92,7 @@ class AdminPage extends StatelessWidget {
           ),
           if (toolbar != null)
             Padding(
-              padding: const EdgeInsets.fromLTRB(
-                AppSpacing.lg,
-                0,
-                AppSpacing.lg,
-                AppSpacing.sm,
-              ),
+              padding: EdgeInsets.fromLTRB(gutter, 0, gutter, AppSpacing.sm),
               child: toolbar,
             ),
           if (dividerBelowHeader)

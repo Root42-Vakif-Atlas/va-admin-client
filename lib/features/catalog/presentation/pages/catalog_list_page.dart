@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vakif_atlas_admin/core/keyboard/app_shortcuts.dart';
@@ -19,6 +20,7 @@ import 'package:vakif_atlas_admin/shared/widgets/molecules/search_field.dart';
 import 'package:vakif_atlas_admin/shared/widgets/organisms/admin_table.dart';
 import 'package:vakif_atlas_admin/shared/widgets/organisms/paged_list.dart';
 import 'package:vakif_atlas_admin/shared/widgets/templates/admin_page.dart';
+import 'package:vakif_atlas_admin/core/theme/responsive.dart';
 
 typedef _ListState = PagedListState<CatalogMonumentSummary, CatalogFilter>;
 
@@ -46,6 +48,16 @@ class CatalogListPage extends StatefulWidget {
 class _CatalogListPageState extends State<CatalogListPage> {
   /// Bu genişliğin altında dönem ve görsel sütunları gizlenir.
   static const double _wideTable = 960;
+
+  /// Bu genişliğin altında (telefon / dar tablet) tablo iki sütundur: ad
+  /// (altında tür · il) ve durum.
+  static const double _compactTable = 720;
+
+  static bool get _folderImportSupported =>
+      !kIsWeb &&
+      (defaultTargetPlatform == TargetPlatform.macOS ||
+          defaultTargetPlatform == TargetPlatform.windows ||
+          defaultTargetPlatform == TargetPlatform.linux);
 
   final _searchFocus = FocusNode();
 
@@ -80,10 +92,13 @@ class _CatalogListPageState extends State<CatalogListPage> {
           subtitle: l10n.catalogSubtitle,
           dividerBelowHeader: false,
           actions: [
-            OutlinedButton(
-              onPressed: widget.onImport,
-              child: Text(l10n.catalogImport),
-            ),
+            // Klasör seçimi (`getDirectoryPath`) ve yerel dosya okuma yalnızca
+            // masaüstünde var; web ve mobilde içe aktarma sunulmaz.
+            if (_folderImportSupported)
+              OutlinedButton(
+                onPressed: widget.onImport,
+                child: Text(l10n.catalogImport),
+              ),
             Tooltip(
               message: AppShortcuts.label('N'),
               child: FilledButton(
@@ -97,17 +112,13 @@ class _CatalogListPageState extends State<CatalogListPage> {
             builder: (context, state) {
               final filter = state.filter;
               return FilterToolbar(
+                search: SearchField(
+                  label: l10n.catalogSearch,
+                  initialValue: filter.query,
+                  focusNode: _searchFocus,
+                  onChanged: (query) => update((f) => f.copyWith(query: query)),
+                ),
                 children: [
-                  SizedBox(
-                    width: 320,
-                    child: SearchField(
-                      label: l10n.catalogSearch,
-                      initialValue: filter.query,
-                      focusNode: _searchFocus,
-                      onChanged: (query) =>
-                          update((f) => f.copyWith(query: query)),
-                    ),
-                  ),
                   FilterMenu<Publication>(
                     label: l10n.catalogFilterPublication,
                     multiple: false,
@@ -174,16 +185,17 @@ class _CatalogListPageState extends State<CatalogListPage> {
             },
           ),
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(
-              AppSpacing.lg,
+            padding: EdgeInsets.fromLTRB(
+              context.pageGutter,
               AppSpacing.xs,
-              AppSpacing.lg,
+              context.pageGutter,
               AppSpacing.lg,
             ),
             child: BlocBuilder<CatalogListCubit, _ListState>(
               builder: (context, state) => LayoutBuilder(
                 builder: (context, constraints) {
                   final wide = constraints.maxWidth >= _wideTable;
+                  final compact = constraints.maxWidth < _compactTable;
                   final sort = state.filter.sort;
                   final columns = [
                     AdminTableColumn(
@@ -194,19 +206,21 @@ class _CatalogListPageState extends State<CatalogListPage> {
                       onSort: () =>
                           update((f) => f.copyWith(sort: CatalogSort.name)),
                     ),
-                    AdminTableColumn(
-                      label: l10n.catalogColumnCategory,
-                      flex: 3,
-                    ),
+                    if (!compact)
+                      AdminTableColumn(
+                        label: l10n.catalogColumnCategory,
+                        flex: 3,
+                      ),
                     if (wide)
                       AdminTableColumn(
                         label: l10n.catalogColumnPeriod,
                         flex: 2,
                       ),
-                    AdminTableColumn(
-                      label: l10n.catalogColumnLocation,
-                      flex: 3,
-                    ),
+                    if (!compact)
+                      AdminTableColumn(
+                        label: l10n.catalogColumnLocation,
+                        flex: 3,
+                      ),
                     if (wide)
                       AdminTableColumn(
                         label: l10n.catalogColumnImages,
@@ -215,18 +229,20 @@ class _CatalogListPageState extends State<CatalogListPage> {
                       ),
                     AdminTableColumn(
                       label: l10n.catalogColumnStatus,
-                      width: 136,
+                      width: compact ? 112 : 136,
                     ),
-                    AdminTableColumn(
-                      label: l10n.catalogColumnUpdated,
-                      width: 104,
-                      numeric: true,
-                      sorted: sort == CatalogSort.updated,
-                      sortDescending: true,
-                      sortTooltip: l10n.catalogSortUpdated,
-                      onSort: () =>
-                          update((f) => f.copyWith(sort: CatalogSort.updated)),
-                    ),
+                    if (!compact)
+                      AdminTableColumn(
+                        label: l10n.catalogColumnUpdated,
+                        width: 104,
+                        numeric: true,
+                        sorted: sort == CatalogSort.updated,
+                        sortDescending: true,
+                        sortTooltip: l10n.catalogSortUpdated,
+                        onSort: () => update(
+                          (f) => f.copyWith(sort: CatalogSort.updated),
+                        ),
+                      ),
                   ];
                   return AdminTable(
                     columns: columns,
@@ -256,6 +272,7 @@ class _CatalogListPageState extends State<CatalogListPage> {
                         monument: monument,
                         columns: columns,
                         wide: wide,
+                        compact: compact,
                         onTap: () => widget.onOpen(monument.id),
                       ),
                     ),
@@ -275,12 +292,16 @@ class _MonumentRow extends StatelessWidget {
     required this.monument,
     required this.columns,
     required this.wide,
+    required this.compact,
     required this.onTap,
   });
 
   final CatalogMonumentSummary monument;
   final List<AdminTableColumn> columns;
   final bool wide;
+
+  /// İki sütunlu dar tablo: tür ve il adın altında.
+  final bool compact;
   final VoidCallback onTap;
 
   @override
@@ -335,7 +356,13 @@ class _MonumentRow extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    monument.id,
+                    compact
+                        ? [
+                            monument.category.label(l10n),
+                            monument.city,
+                            if (!monument.hasLocation) l10n.catalogNoLocation,
+                          ].join(' · ')
+                        : monument.id,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: secondary,
@@ -345,10 +372,11 @@ class _MonumentRow extends StatelessWidget {
             ),
           ],
         ),
-        _TwoLine(
-          primary: monument.category.label(l10n),
-          secondary: complexLine,
-        ),
+        if (!compact)
+          _TwoLine(
+            primary: monument.category.label(l10n),
+            secondary: complexLine,
+          ),
         if (wide)
           Text(
             monument.period.label(l10n),
@@ -356,16 +384,17 @@ class _MonumentRow extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
             style: styles.bodyMedium,
           ),
-        _TwoLine(
-          primary: monument.city,
-          // Konumu girilmemiş eser haritada görünmez: satırda belirtilir.
-          secondary: monument.hasLocation
-              ? monument.district
-              : [
-                  if (monument.district.isNotEmpty) monument.district,
-                  l10n.catalogNoLocation,
-                ].join(' · '),
-        ),
+        if (!compact)
+          _TwoLine(
+            primary: monument.city,
+            // Konumu girilmemiş eser haritada görünmez: satırda belirtilir.
+            secondary: monument.hasLocation
+                ? monument.district
+                : [
+                    if (monument.district.isNotEmpty) monument.district,
+                    l10n.catalogNoLocation,
+                  ].join(' · '),
+          ),
         if (wide)
           Text(
             context.formatNumber(imageCount),
@@ -376,13 +405,14 @@ class _MonumentRow extends StatelessWidget {
             semanticsLabel: l10n.catalogImageCount(imageCount),
           ),
         monument.publication.chip(l10n),
-        Text(
-          context.formatDate(monument.updatedAt),
-          maxLines: 1,
-          style: styles.bodySmall.copyWith(
-            fontFeatures: AppTypography.tabularFigures,
+        if (!compact)
+          Text(
+            context.formatDate(monument.updatedAt),
+            maxLines: 1,
+            style: styles.bodySmall.copyWith(
+              fontFeatures: AppTypography.tabularFigures,
+            ),
           ),
-        ),
       ],
     );
   }

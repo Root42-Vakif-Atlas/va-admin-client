@@ -90,17 +90,19 @@ class _SearchFieldState extends State<SearchField> {
           minWidth: AppSpacing.xl + AppSpacing.xxs,
         ),
         suffixIcon: _controller.text.isEmpty
-            ? Padding(
-                padding: const EdgeInsets.only(right: AppSpacing.sm),
-                child: ExcludeSemantics(
-                  child: Text(
-                    AppShortcuts.label('F'),
-                    style: context.textStyles.labelMedium.copyWith(
-                      color: colors.onSurfaceVariant,
-                    ),
-                  ),
-                ),
-              )
+            ? !AppShortcuts.hintsVisible
+                  ? null
+                  : Padding(
+                      padding: const EdgeInsets.only(right: AppSpacing.sm),
+                      child: ExcludeSemantics(
+                        child: Text(
+                          AppShortcuts.label('F'),
+                          style: context.textStyles.labelMedium.copyWith(
+                            color: colors.onSurfaceVariant,
+                          ),
+                        ),
+                      ),
+                    )
             : IconButton(
                 tooltip: l10n.searchClear,
                 onPressed: _clear,

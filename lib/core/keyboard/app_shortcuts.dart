@@ -22,9 +22,26 @@ class RefreshIntent extends Intent {
   const RefreshIntent();
 }
 
-/// Ayrıntı panelini kapat (Esc).
-class CloseDetailIntent extends Intent {
-  const CloseDetailIntent();
+/// Ayrıntı panelini kapatır (Esc → Flutter'ın varsayılan [DismissIntent]'i).
+///
+/// Esc uygulama genelinde yeniden eşlenmez: açık diyalog ve menüler kendi
+/// [DismissIntent] eylemleriyle kapanmaya devam eder (odak onlardadır).
+/// Metin alanına yazılırken eylem devre dışıdır; yoksa Esc yazılan notu
+/// paneliyle birlikte kaybettirirdi.
+class CloseDetailAction extends Action<DismissIntent> {
+  CloseDetailAction(this.onClose);
+
+  final VoidCallback onClose;
+
+  @override
+  bool isEnabled(DismissIntent intent) =>
+      FocusManager.instance.primaryFocus?.context?.widget is! EditableText;
+
+  @override
+  Object? invoke(DismissIntent intent) {
+    onClose();
+    return null;
+  }
 }
 
 /// Masaüstü klavye kısayolları. macOS'ta Command, diğer platformlarda Control
@@ -45,8 +62,13 @@ abstract final class AppShortcuts {
     primary(LogicalKeyboardKey.keyS): const SaveIntent(),
     primary(LogicalKeyboardKey.keyR): const RefreshIntent(),
     const SingleActivator(LogicalKeyboardKey.f5): const RefreshIntent(),
-    const SingleActivator(LogicalKeyboardKey.escape): const CloseDetailIntent(),
   };
+
+  /// Donanım klavyesi varsayılan mı (masaüstü / web). Telefon ve tablette
+  /// kısayol ipuçları gösterilmez; kısayollar yine çalışır.
+  static bool get hintsVisible =>
+      defaultTargetPlatform != TargetPlatform.android &&
+      defaultTargetPlatform != TargetPlatform.iOS;
 
   /// Düğme ipuçlarında gösterilen biçim (⌘F / Ctrl+F).
   static String label(String key) => _apple ? '⌘$key' : 'Ctrl+$key';

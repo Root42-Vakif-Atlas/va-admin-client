@@ -6,6 +6,7 @@ import 'package:vakif_atlas_admin/core/keyboard/app_shortcuts.dart';
 import 'package:vakif_atlas_admin/core/l10n/failure_messages.dart';
 import 'package:vakif_atlas_admin/core/l10n/formatters.dart';
 import 'package:vakif_atlas_admin/core/l10n/l10n.dart';
+import 'package:vakif_atlas_admin/core/theme/responsive.dart';
 import 'package:vakif_atlas_admin/core/theme/theme_context.dart';
 import 'package:vakif_atlas_admin/core/theme/tokens/app_spacing.dart';
 import 'package:vakif_atlas_admin/features/moderation/domain/entities/moderated_memory.dart';
@@ -64,13 +65,12 @@ class _ModerationPageState extends State<ModerationPage> {
         RefreshIntent: CallbackAction<RefreshIntent>(
           onInvoke: (_) => unawaited(cubit.refresh()),
         ),
-        CloseDetailIntent: CallbackAction<CloseDetailIntent>(
-          onInvoke: (_) => widget.onSelect(null),
-        ),
+        DismissIntent: CloseDetailAction(() => widget.onSelect(null)),
       },
       child: Focus(
         autofocus: true,
         child: AdminPage(
+          showHeader: context.isSplitView || widget.selectedId == null,
           title: l10n.moderationTitle,
           subtitle: l10n.moderationSubtitle,
           actions: [
@@ -85,10 +85,15 @@ class _ModerationPageState extends State<ModerationPage> {
           ],
           toolbar: BlocBuilder<ModerationQueueCubit, _QueueState>(
             buildWhen: (previous, current) => previous.filter != current.filter,
-            builder: (context, state) => Wrap(
-              spacing: AppSpacing.md,
-              runSpacing: AppSpacing.sm,
-              crossAxisAlignment: WrapCrossAlignment.center,
+            builder: (context, state) => FilterToolbar(
+              search: SearchField(
+                label: l10n.moderationSearch,
+                initialValue: state.filter.query,
+                focusNode: _searchFocus,
+                onChanged: (query) => unawaited(
+                  cubit.load(cubit.state.filter.copyWith(query: query)),
+                ),
+              ),
               children: [
                 SegmentedButton<ModerationQueue>(
                   showSelectedIcon: false,
@@ -137,21 +142,11 @@ class _ModerationPageState extends State<ModerationPage> {
                       cubit.load(state.filter.copyWith(sort: sort)),
                     ),
                   ),
-                SizedBox(
-                  width: 320,
-                  child: SearchField(
-                    label: l10n.moderationSearch,
-                    initialValue: state.filter.query,
-                    focusNode: _searchFocus,
-                    onChanged: (query) => unawaited(
-                      cubit.load(cubit.state.filter.copyWith(query: query)),
-                    ),
-                  ),
-                ),
               ],
             ),
           ),
           child: MasterDetailLayout(
+            onCloseDetail: () => widget.onSelect(null),
             masterLabel: l10n.moderationListLabel,
             detailLabel: l10n.moderationDetailLabel,
             master: BlocBuilder<ModerationQueueCubit, _QueueState>(

@@ -344,6 +344,12 @@ abstract final class AppTheme {
         titleTextStyle: textTheme.titleLarge,
         contentTextStyle: textTheme.bodyLarge,
         shape: sheetShape,
+        // Telefonda diyalog ekranın tamamına yakın kullanılır; masaüstünde
+        // içerik zaten `AppSizes.dialogWidth` ile sınırlıdır.
+        insetPadding: const EdgeInsets.symmetric(
+          horizontal: AppSpacing.md,
+          vertical: AppSpacing.lg,
+        ),
       ),
       bottomSheetTheme: BottomSheetThemeData(
         backgroundColor: colors.surfaceElevated,

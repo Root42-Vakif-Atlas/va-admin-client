@@ -15,6 +15,7 @@ import 'package:vakif_atlas_admin/shared/widgets/molecules/detail_section.dart';
 import 'package:vakif_atlas_admin/shared/widgets/molecules/inline_message.dart';
 import 'package:vakif_atlas_admin/shared/widgets/molecules/status_chip.dart';
 import 'package:vakif_atlas_admin/shared/widgets/templates/admin_page.dart';
+import 'package:vakif_atlas_admin/core/theme/responsive.dart';
 
 /// VGM verisinin içe aktarımı (ADR 59): klasör seçilir (veri dosyası +
 /// `images/`), sunucu planı gösterilir, onayla görseller yüklenip kayıtlar
@@ -91,7 +92,7 @@ class CatalogImportPage extends StatelessWidget {
               ),
           ],
           child: SingleChildScrollView(
-            padding: const EdgeInsets.all(AppSpacing.lg),
+            padding: EdgeInsets.all(context.pageGutter),
             child: Align(
               alignment: AlignmentDirectional.topStart,
               child: ConstrainedBox(

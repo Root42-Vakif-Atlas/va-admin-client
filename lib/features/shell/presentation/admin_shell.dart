@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vakif_atlas_admin/core/l10n/l10n.dart';
 import 'package:vakif_atlas_admin/core/router/routes.dart';
 import 'package:vakif_atlas_admin/core/theme/app_theme.dart';
+import 'package:vakif_atlas_admin/core/theme/responsive.dart';
 import 'package:vakif_atlas_admin/core/theme/theme_context.dart';
 import 'package:vakif_atlas_admin/core/theme/tokens/app_durations.dart';
 import 'package:vakif_atlas_admin/core/theme/tokens/app_spacing.dart';
@@ -44,6 +45,13 @@ class ShellSection {
 /// Yönetim kabuğu: kenar gezinmesi (rol bazlı bölümler, hesap menüsü) +
 /// sayfa. Kenar çubuğu her temada Gece Moru zeminle çizilir
 /// (`AppTheme.sidebar`); yüksek kontrastta yüksek kontrast koyu tema.
+///
+/// Pencere sınıfına göre ([WindowClass]):
+/// - **compact** (< 600 px): üst çubuk (menü + marka) ve çekmece içinde tam
+///   kenar çubuğu; içerik tüm genişliği kullanır.
+/// - **medium / expanded**: kalıcı kenar çubuğu; etiketli (geniş) hâl
+///   yalnızca ≥ [AppBreakpoints.sidebarExtended] pencerede açılabilir, altında
+///   simge şeridine daralır.
 class AdminShell extends StatelessWidget {
   const AdminShell({
     required this.location,
@@ -129,26 +137,126 @@ class AdminShell extends StatelessWidget {
     final extendedPreference = context.select<AppSettingsCubit, bool>(
       (cubit) => cubit.state.navigationExtended,
     );
-    return Scaffold(
-      body: LayoutBuilder(
-        builder: (context, constraints) {
-          // Dar pencerede etiketler sığmaz: kenar çubuğu otomatik daralır.
-          final extended =
-              extendedPreference &&
-              constraints.maxWidth >= AppBreakpoints.split;
-          return Row(
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final width = constraints.maxWidth;
+        if (WindowClass.of(width) == WindowClass.compact) {
+          return Scaffold(
+            appBar: _CompactTopBar(
+              pendingCount: badges.values.fold(0, (sum, n) => sum + n),
+            ),
+            drawer: Drawer(
+              width: AppSizes.sidebarExtended,
+              shape: const RoundedRectangleBorder(),
+              child: _Sidebar(
+                user: user,
+                extended: true,
+                canExtend: false,
+                inDrawer: true,
+                location: location,
+                badges: badges,
+                onNavigate: onNavigate,
+              ),
+            ),
+            body: SafeArea(
+              top: false,
+              child: FocusTraversalGroup(child: child),
+            ),
+          );
+        }
+        // Dar pencerede etiketler ana-detaya yer bırakmaz: kenar çubuğu
+        // otomatik daralır.
+        final canExtend = width >= AppBreakpoints.sidebarExtended;
+        final extended = extendedPreference && canExtend;
+        return Scaffold(
+          body: Row(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               _Sidebar(
                 user: user,
                 extended: extended,
-                canExtend: constraints.maxWidth >= AppBreakpoints.split,
+                canExtend: canExtend,
                 location: location,
                 badges: badges,
                 onNavigate: onNavigate,
               ),
-              Expanded(child: FocusTraversalGroup(child: child)),
+              Expanded(
+                child: SafeArea(
+                  left: false,
+                  child: FocusTraversalGroup(child: child),
+                ),
+              ),
             ],
+          ),
+        );
+      },
+    );
+  }
+}
+
+/// Telefon düzeninin üst çubuğu: çekmeceyi açan menü düğmesi (bekleyen iş
+/// varsa rozetli) ve marka. Kenar çubuğuyla aynı temada çizilir.
+class _CompactTopBar extends StatelessWidget implements PreferredSizeWidget {
+  const _CompactTopBar({required this.pendingCount});
+
+  final int pendingCount;
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+    final highContrast = context.colors.isHighContrast;
+    return Theme(
+      data: highContrast ? AppTheme.highContrastDark() : AppTheme.sidebar(),
+      child: Builder(
+        builder: (context) {
+          final colors = context.colors;
+          final materialL10n = MaterialLocalizations.of(context);
+          return AppBar(
+            backgroundColor: colors.surface,
+            foregroundColor: colors.onSurface,
+            surfaceTintColor: Colors.transparent,
+            elevation: 0,
+            scrolledUnderElevation: 0,
+            titleSpacing: 0,
+            leading: Builder(
+              builder: (context) => IconButton(
+                tooltip: pendingCount > 0
+                    ? l10n.navBadgeSemantics(
+                        materialL10n.openAppDrawerTooltip,
+                        pendingCount,
+                      )
+                    : materialL10n.openAppDrawerTooltip,
+                onPressed: () => Scaffold.of(context).openDrawer(),
+                icon: Badge(
+                  isLabelVisible: pendingCount > 0,
+                  backgroundColor: colors.primary,
+                  textColor: colors.onPrimary,
+                  label: Text(pendingCount > 99 ? '99+' : '$pendingCount'),
+                  child: const Icon(Icons.menu),
+                ),
+              ),
+            ),
+            title: Semantics(
+              label: l10n.appTitle,
+              excludeSemantics: true,
+              child: Row(
+                children: [
+                  const BrandEmblem(size: AppSizes.iconMd),
+                  const SizedBox(width: AppSpacing.sm),
+                  Flexible(
+                    child: Text(
+                      l10n.appBrandName,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: context.textStyles.titleMedium,
+                    ),
+                  ),
+                ],
+              ),
+            ),
           );
         },
       ),
@@ -164,11 +272,15 @@ class _Sidebar extends StatelessWidget {
     required this.location,
     required this.badges,
     required this.onNavigate,
+    this.inDrawer = false,
   });
 
   final StaffUser? user;
   final bool extended;
   final bool canExtend;
+
+  /// Telefon düzeninde çekmecede: gezinince çekmece kapanır.
+  final bool inDrawer;
   final String location;
   final Map<String, int> badges;
   final ValueChanged<String> onNavigate;
@@ -182,6 +294,13 @@ class _Sidebar extends StatelessWidget {
           (s) => s.permission == null || (user?.can(s.permission!) ?? false),
         )
         .toList();
+    void navigate(String route) {
+      if (inDrawer) {
+        Scaffold.maybeOf(context)?.closeDrawer();
+      }
+      onNavigate(route);
+    }
+
     return Theme(
       data: highContrast ? AppTheme.highContrastDark() : AppTheme.sidebar(),
       child: Builder(
@@ -222,7 +341,7 @@ class _Sidebar extends StatelessWidget {
                                 section.route,
                                 location,
                               ),
-                              onTap: () => onNavigate(section.route),
+                              onTap: () => navigate(section.route),
                             ),
                         ],
                       ),
@@ -254,7 +373,7 @@ class _Sidebar extends StatelessWidget {
                       _AccountTile(
                         user: user!,
                         extended: extended,
-                        onNavigate: onNavigate,
+                        onNavigate: navigate,
                       ),
                   ],
                 ),

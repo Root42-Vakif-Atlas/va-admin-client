@@ -6,8 +6,9 @@ import 'package:vakif_atlas_admin/core/theme/tokens/app_spacing.dart';
 import 'package:vakif_atlas_admin/shared/widgets/atoms/brand_emblem.dart';
 
 /// Giriş ekranlarının düzeni: geniş pencerede solda marka paneli (Gece Moru
-/// zemin, kenar çubuğuyla aynı tema), sağda form; dar pencerede yalnızca
-/// form.
+/// zemin, kenar çubuğuyla aynı tema), sağda form; dar pencerede formun
+/// üstünde kompakt marka satırı (amblem + ad). Kenar boşluğu telefonda
+/// daralır.
 class AuthLayout extends StatelessWidget {
   const AuthLayout({required this.child, super.key});
 
@@ -21,14 +22,27 @@ class AuthLayout extends StatelessWidget {
       body: LayoutBuilder(
         builder: (context, constraints) {
           final wide = constraints.maxWidth >= AppBreakpoints.split;
+          final compact = constraints.maxWidth < AppBreakpoints.medium;
           final form = Center(
             child: SingleChildScrollView(
-              padding: const EdgeInsets.all(AppSpacing.xl),
+              padding: EdgeInsets.symmetric(
+                horizontal: compact ? AppSpacing.md : AppSpacing.xl,
+                vertical: compact ? AppSpacing.lg : AppSpacing.xl,
+              ),
               child: ConstrainedBox(
                 constraints: const BoxConstraints(
                   maxWidth: AppSizes.dialogWidth,
                 ),
-                child: FocusTraversalGroup(child: child),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    if (!wide) ...[
+                      const _CompactBrand(),
+                      SizedBox(height: compact ? AppSpacing.lg : AppSpacing.xl),
+                    ],
+                    FocusTraversalGroup(child: child),
+                  ],
+                ),
               ),
             ),
           );
@@ -43,6 +57,40 @@ class AuthLayout extends StatelessWidget {
             ],
           );
         },
+      ),
+    );
+  }
+}
+
+/// Dar pencerede marka paneli yerine formun üstündeki satır.
+class _CompactBrand extends StatelessWidget {
+  const _CompactBrand();
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+    return Semantics(
+      label: l10n.appTitle,
+      excludeSemantics: true,
+      child: Row(
+        children: [
+          const BrandEmblem(size: AppSizes.iconLg),
+          const SizedBox(width: AppSpacing.sm),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(l10n.appBrandName, style: context.textStyles.titleMedium),
+                Text(
+                  l10n.appBrandSubtitle,
+                  style: context.textStyles.labelMedium.copyWith(
+                    color: context.colors.onSurfaceVariant,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

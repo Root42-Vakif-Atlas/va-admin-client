@@ -102,7 +102,8 @@ abstract final class AppSizes {
 
 /// Duyarlı (responsive) kırılım noktaları (Design System §4.1).
 abstract final class AppBreakpoints {
-  /// Masaüstü ana-detay düzeni: liste ve ayrıntı yan yana.
+  /// Masaüstü ana-detay düzeni: liste ve ayrıntı yan yana (pencere
+  /// genişliği; `WindowClass.expanded`).
   static const double split = 1024;
 
   /// Bu genişliğin altı `Compact` (telefon).
@@ -110,4 +111,8 @@ abstract final class AppBreakpoints {
 
   /// Bu genişlik ve üzeri `Expanded` (büyük tablet / masaüstü).
   static const double expanded = 840;
+
+  /// Kenar çubuğu bu pencere genişliğinden itibaren etiketli açılabilir;
+  /// altında simge şeridine daralır (içerik ana-detaya yer bırakır).
+  static const double sidebarExtended = 1280;
 }

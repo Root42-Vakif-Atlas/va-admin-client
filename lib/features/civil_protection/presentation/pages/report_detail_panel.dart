@@ -22,6 +22,8 @@ import 'package:vakif_atlas_admin/shared/widgets/molecules/inline_message.dart';
 import 'package:vakif_atlas_admin/shared/widgets/organisms/photo_strip.dart';
 import 'package:vakif_atlas_admin/shared/widgets/templates/loading_status_view.dart';
 import 'package:vakif_atlas_admin/shared/widgets/templates/status_message_view.dart';
+import 'package:vakif_atlas_admin/shared/widgets/templates/master_detail_layout.dart';
+import 'package:vakif_atlas_admin/core/theme/responsive.dart';
 
 /// Seçili raporun ayrıntısı ve durum güncelleme formu. Kaydedilen rapor
 /// kuyrukta yerinde güncellenir ([onChanged]).
@@ -100,7 +102,7 @@ class _ReportDetail extends StatelessWidget {
     final l10n = context.l10n;
     final location = report.location;
     return ListView(
-      padding: const EdgeInsets.all(AppSpacing.lg),
+      padding: EdgeInsets.all(context.pageGutter),
       children: [
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -134,11 +136,7 @@ class _ReportDetail extends StatelessWidget {
                 ],
               ),
             ),
-            IconButton(
-              tooltip: l10n.commonClose,
-              onPressed: onClose,
-              icon: const Icon(Icons.close),
-            ),
+            DetailCloseButton(onPressed: onClose),
           ],
         ),
         if (report.anonymized) ...[

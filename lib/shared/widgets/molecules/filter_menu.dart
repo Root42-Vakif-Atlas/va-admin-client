@@ -18,17 +18,66 @@ class FilterOption<T> {
 /// Liste araç çubuğu: arama, süzgeç menüleri ve sıralama tek satırda
 /// (sığmazsa alt satıra kayar). Süzgeçler açılır menü olduğundan liste
 /// alanını daraltmaz.
+///
+/// Dar alanda (< [AppBreakpoints.medium]) arama tam genişlik ilk satırdadır,
+/// süzgeçler altında yatay kaydırılan tek satırdır: süzgeç düğmeleri liste
+/// alanını birkaç satır boyunca yemez.
 class FilterToolbar extends StatelessWidget {
-  const FilterToolbar({required this.children, super.key});
+  const FilterToolbar({
+    required this.children,
+    this.search,
+    this.searchWidth = 320,
+    super.key,
+  });
 
+  /// Arama alanı (genişliği araç çubuğu belirler).
+  final Widget? search;
+
+  /// Geniş düzende arama alanının en büyük genişliği.
+  final double searchWidth;
   final List<Widget> children;
 
   @override
-  Widget build(BuildContext context) => Wrap(
-    spacing: AppSpacing.xs,
-    runSpacing: AppSpacing.xs,
-    crossAxisAlignment: WrapCrossAlignment.center,
-    children: children,
+  Widget build(BuildContext context) => LayoutBuilder(
+    builder: (context, constraints) {
+      final search = this.search;
+      if (constraints.maxWidth >= AppBreakpoints.medium) {
+        return Wrap(
+          spacing: AppSpacing.xs,
+          runSpacing: AppSpacing.xs,
+          crossAxisAlignment: WrapCrossAlignment.center,
+          children: [
+            if (search != null)
+              ConstrainedBox(
+                constraints: BoxConstraints(maxWidth: searchWidth),
+                child: SizedBox(width: double.infinity, child: search),
+              ),
+            ...children,
+          ],
+        );
+      }
+      return Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          ?search,
+          if (search != null && children.isNotEmpty)
+            const SizedBox(height: AppSpacing.xs),
+          if (children.isNotEmpty)
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  for (final (index, child) in children.indexed) ...[
+                    if (index > 0) const SizedBox(width: AppSpacing.xs),
+                    child,
+                  ],
+                ],
+              ),
+            ),
+        ],
+      );
+    },
   );
 }
 

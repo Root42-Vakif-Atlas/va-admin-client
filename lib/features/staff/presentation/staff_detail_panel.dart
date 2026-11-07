@@ -23,6 +23,8 @@ import 'package:vakif_atlas_admin/shared/widgets/molecules/inline_message.dart';
 import 'package:vakif_atlas_admin/shared/widgets/molecules/status_chip.dart';
 import 'package:vakif_atlas_admin/shared/widgets/templates/loading_status_view.dart';
 import 'package:vakif_atlas_admin/shared/widgets/templates/status_message_view.dart';
+import 'package:vakif_atlas_admin/shared/widgets/templates/master_detail_layout.dart';
+import 'package:vakif_atlas_admin/core/theme/responsive.dart';
 
 class StaffDetailPanel extends StatelessWidget {
   const StaffDetailPanel({
@@ -84,7 +86,7 @@ class StaffDetailPanel extends StatelessWidget {
             ? null
             : state.actionFailure;
         return ListView(
-          padding: const EdgeInsets.all(AppSpacing.lg),
+          padding: EdgeInsets.all(context.pageGutter),
           children: [
             Row(
               children: [
@@ -130,11 +132,7 @@ class StaffDetailPanel extends StatelessWidget {
                     ],
                   ),
                 ),
-                IconButton(
-                  tooltip: l10n.commonClose,
-                  onPressed: onClose,
-                  icon: const Icon(Icons.close),
-                ),
+                DetailCloseButton(onPressed: onClose),
               ],
             ),
             if (failure != null) ...[

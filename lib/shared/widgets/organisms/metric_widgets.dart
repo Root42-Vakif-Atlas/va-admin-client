@@ -59,7 +59,12 @@ class MetricTile extends StatelessWidget {
             ),
           ),
           const SizedBox(height: AppSpacing.xs),
-          Text(number, style: styles.displayMedium),
+          // Dar karoda büyük sayı taşmaz, küçülür.
+          FittedBox(
+            fit: BoxFit.scaleDown,
+            alignment: AlignmentDirectional.centerStart,
+            child: Text(number, style: styles.displayMedium),
+          ),
           const SizedBox(height: AppSpacing.xxs),
           Text(
             note ?? '',
@@ -92,7 +97,7 @@ class MetricTile extends StatelessWidget {
 }
 
 /// Göstergeler tek kartta yan yana, aralarında ince ayraç; dar pencerede
-/// ikişerli satırlar.
+/// ikişerli satırlar, en dar ekranda alt alta.
 class MetricStrip extends StatelessWidget {
   const MetricStrip({required this.metrics, super.key});
 
@@ -105,9 +110,13 @@ class MetricStrip extends StatelessWidget {
     return SurfaceCard(
       child: LayoutBuilder(
         builder: (context, constraints) {
+          // Hepsi sığıyorsa tek satır; değilse ikişerli; telefonun en dar
+          // genişliğinde (< 2 × 160 px) alt alta.
           final perRow = constraints.maxWidth >= metrics.length * 200
               ? metrics.length
-              : math.min(2, metrics.length);
+              : constraints.maxWidth >= 2 * 160
+              ? math.min(2, metrics.length)
+              : 1;
           final rows = <List<Widget>>[
             for (var i = 0; i < metrics.length; i += perRow)
               metrics.sublist(i, math.min(i + perRow, metrics.length)),

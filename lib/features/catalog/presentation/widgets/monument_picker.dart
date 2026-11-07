@@ -11,6 +11,7 @@ import 'package:vakif_atlas_admin/features/catalog/domain/catalog_entities.dart'
 import 'package:vakif_atlas_admin/features/catalog/presentation/widgets/catalog_labels.dart';
 import 'package:vakif_atlas_admin/shared/widgets/molecules/search_field.dart';
 import 'package:vakif_atlas_admin/shared/widgets/organisms/paged_list.dart';
+import 'package:vakif_atlas_admin/core/theme/responsive.dart';
 
 /// Katalogda arama (sunucu tarafı, imleçli): sorgu → sayfa.
 typedef MonumentSearch = ResultFuture<Paged<CatalogMonumentSummary>> Function(
@@ -176,10 +177,10 @@ class _MonumentPickerDialogState extends State<_MonumentPickerDialog> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(
+              padding: EdgeInsets.fromLTRB(
+                context.pageGutter,
                 AppSpacing.lg,
-                AppSpacing.lg,
-                AppSpacing.lg,
+                context.pageGutter,
                 AppSpacing.sm,
               ),
               child: Column(

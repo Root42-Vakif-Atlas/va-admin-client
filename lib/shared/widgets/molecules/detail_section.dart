@@ -11,6 +11,9 @@ class DetailSection extends StatelessWidget {
     super.key,
   });
 
+  /// Bu genişliğin altında [trailing] başlığın altına iner.
+  static const double _stackTrailingBelow = 480;
+
   final String title;
   final Widget child;
   final Widget? trailing;
@@ -32,16 +35,34 @@ class DetailSection extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Row(
-              children: [
-                Expanded(
-                  child: Semantics(
-                    header: true,
-                    child: Text(title, style: context.textStyles.titleMedium),
-                  ),
-                ),
-                ?trailing,
-              ],
+            LayoutBuilder(
+              builder: (context, constraints) {
+                final heading = Semantics(
+                  header: true,
+                  child: Text(title, style: context.textStyles.titleMedium),
+                );
+                final trailing = this.trailing;
+                if (trailing == null) {
+                  return heading;
+                }
+                // Dar kartta eylemler başlığı ezmesin: alt satıra geçer.
+                if (constraints.maxWidth < _stackTrailingBelow) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      heading,
+                      const SizedBox(height: AppSpacing.xs),
+                      trailing,
+                    ],
+                  );
+                }
+                return Row(
+                  children: [
+                    Expanded(child: heading),
+                    trailing,
+                  ],
+                );
+              },
             ),
             const SizedBox(height: AppSpacing.sm),
             child,
