@@ -347,7 +347,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sessionIdleMessage =>
-      'Your session was closed for security after 30 minutes of inactivity.';
+      'Your session was closed for security after 24 hours of inactivity.';
 
   @override
   String get signInTitle => 'Staff sign-in';

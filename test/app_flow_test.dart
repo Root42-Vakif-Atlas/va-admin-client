@@ -194,7 +194,7 @@ void main() {
     },
   );
 
-  testWidgets('30 dk hareketsizlikte oturum kapanır ve neden bildirilir', (
+  testWidgets('24 saat hareketsizlikte oturum kapanır ve neden bildirilir', (
     tester,
   ) async {
     await start(tester, roles: ['editor']);
@@ -203,7 +203,7 @@ void main() {
     await tester.pumpAndSettle();
     expect(getIt<AppRouter>().router.state.uri.path, '/sign-in');
     expect(
-      find.textContaining('30 dakika işlem yapılmadığı için'),
+      find.textContaining('24 saat işlem yapılmadığı için'),
       findsOneWidget,
     );
     expect(backend.last('POST', 'auth/logout'), isNotNull);

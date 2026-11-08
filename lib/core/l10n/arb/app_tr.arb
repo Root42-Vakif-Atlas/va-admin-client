@@ -154,7 +154,7 @@
   "signOutConfirmTitle": "Çıkış yapılsın mı?",
   "signOutConfirmBody": "Bu cihazdaki personel oturumunuz kapatılacak.",
   "sessionExpiredMessage": "Oturumunuz sona erdi. Lütfen yeniden giriş yapın.",
-  "sessionIdleMessage": "30 dakika işlem yapılmadığı için oturumunuz güvenlik amacıyla kapatıldı.",
+  "sessionIdleMessage": "24 saat işlem yapılmadığı için oturumunuz güvenlik amacıyla kapatıldı.",
   "signInTitle": "Personel girişi",
   "signInSubtitle": "VGM personeli için yönetim paneli. Erişim rolünüze göre açılır.",
   "signInEmail": "Kurumsal e-posta",

@@ -653,7 +653,7 @@ abstract class AppLocalizations {
   /// No description provided for @sessionIdleMessage.
   ///
   /// In tr, this message translates to:
-  /// **'30 dakika işlem yapılmadığı için oturumunuz güvenlik amacıyla kapatıldı.'**
+  /// **'24 saat işlem yapılmadığı için oturumunuz güvenlik amacıyla kapatıldı.'**
   String get sessionIdleMessage;
 
   /// No description provided for @signInTitle.

@@ -92,7 +92,7 @@
   "signOutConfirmTitle": "Sign out?",
   "signOutConfirmBody": "Your staff session on this device will be closed.",
   "sessionExpiredMessage": "Your session has ended. Please sign in again.",
-  "sessionIdleMessage": "Your session was closed for security after 30 minutes of inactivity.",
+  "sessionIdleMessage": "Your session was closed for security after 24 hours of inactivity.",
   "signInTitle": "Staff sign-in",
   "signInSubtitle": "Management console for VGM staff. Access depends on your role.",
   "signInEmail": "Work email",

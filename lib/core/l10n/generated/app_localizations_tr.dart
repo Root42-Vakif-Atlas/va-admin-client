@@ -344,7 +344,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get sessionIdleMessage =>
-      '30 dakika işlem yapılmadığı için oturumunuz güvenlik amacıyla kapatıldı.';
+      '24 saat işlem yapılmadığı için oturumunuz güvenlik amacıyla kapatıldı.';
 
   @override
   String get signInTitle => 'Personel girişi';

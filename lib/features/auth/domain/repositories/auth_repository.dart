@@ -6,7 +6,7 @@ import 'package:vakif_atlas_admin/features/auth/domain/entities/staff_user.dart'
 
 /// Personel kimlik doğrulaması (`auth/staff/*`): şifre → TOTP. Personel
 /// oturumu vatandaş oturumundan ayrıdır (ayrı audience, 10 dk erişim
-/// anahtarı, 30 dk hareketsizlik, 12 saat üst sınır).
+/// anahtarı, 24 saat hareketsizlik, 24 saat üst sınır).
 abstract interface class AuthRepository {
   Stream<AuthSessionEvent> get sessionEvents;
 

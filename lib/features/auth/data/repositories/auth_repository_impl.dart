@@ -153,7 +153,7 @@ class AuthRepositoryImpl implements AuthRepository {
           await _remote.logout(refreshToken: refreshToken);
         } on Exception {
           // Sunucuya ulaşılamasa da cihazdaki oturum kapanır; yenileme
-          // anahtarı 30 dk hareketsizlikte zaten geçersizleşir.
+          // anahtarı 24 saat hareketsizlikte zaten geçersizleşir.
         }
       }
     } finally {

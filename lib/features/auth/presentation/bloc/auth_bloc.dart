@@ -52,7 +52,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     emit(const AuthState.guest());
   }
 
-  /// 30 dk hareketsizlik: oturum kapatılır (sunucuda da yenileme anahtarı
+  /// 24 saat hareketsizlik: oturum kapatılır (sunucuda da yenileme anahtarı
   /// aynı sürede geçersizleşir); giriş ekranı nedeni bildirir.
   Future<void> _onIdleTimeout(
     AuthIdleTimeout event,

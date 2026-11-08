@@ -5,7 +5,7 @@ import 'package:flutter/widgets.dart';
 
 /// Kullanıcı etkileşimi (işaretçi, kaydırma, klavye) olmadan [timeout]
 /// geçerse [onTimeout] çağrılır. Personel oturumunun hareketsizlik sınırıdır
-/// (OWASP ASVS V3.3: yönetici oturumu kısa süreli); sunucuda da yenileme
+/// (OWASP ASVS V3.3: yönetici oturumu sınırlı; hackathon için 24 saat); sunucuda da yenileme
 /// anahtarı aynı sürede geçersizleşir. Ağaç yapısını değiştirmez.
 class IdleTimer extends StatefulWidget {
   const IdleTimer({
@@ -16,7 +16,7 @@ class IdleTimer extends StatefulWidget {
     super.key,
   });
 
-  static const Duration defaultTimeout = Duration(minutes: 30);
+  static const Duration defaultTimeout = Duration(hours: 24);
 
   final bool enabled;
   final Duration timeout;
